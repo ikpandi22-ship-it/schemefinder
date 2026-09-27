@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchemeFinder | Government Scheme Discovery & Citizen Assistance Platform</title>
+  <meta name="description" content="myScheme.gov.in & Official Tamil Nadu Government Scheme Discovery Platform powered by AI and SQLite architecture.">
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <!-- Google Fonts for Accessibility & Tamil/English Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Color Tokens */
+      --primary-tn-blue: #0B4F8A;
+      --primary-tn-hover: #083B66;
+      --accent-gold: #F59E0B;
+      --accent-gold-light: #FFF7E6;
+      --success-green: #168A4A;
+      --success-green-bg: #EAF7EF;
+      --warning-amber: #B45309;
+      --warning-amber-bg: #FFF8E7;
+      --near-miss-purple: #236B8E;
+      --near-miss-bg: #EAF4FB;
+      --bg-slate: #F7FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #172033;
+      --text-muted: #5B6472;
+      --border-light: #E2E8F0;
+      --border-accent: #CBD5E1;
+      
+      /* Elevations & Radius */
+      --shadow-sm: 0 1px 3px rgba(23, 32, 51, 0.06), 0 4px 12px rgba(23, 32, 51, 0.04);
+      --shadow-md: 0 8px 24px rgba(23, 32, 51, 0.08);
+      --shadow-lg: 0 16px 40px rgba(23, 32, 51, 0.14);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      --font-family: 'Noto Sans Tamil', 'Noto Sans', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background: linear-gradient(180deg, #F7FAFC 0%, #EEF5F8 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-size: 15px;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 2px;
+    }
+
+    /* Header Navigation */
+    header {
+      width: 100%;
+      background: #FFFFFF;
+      border-bottom: 1px solid #DCE7EF;
+      color: #FFFFFF;
+      padding: 0.8rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 18px rgba(11, 79, 138, 0.08);
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      min-width: 0;
+    }
+
+    .logo-image {
+      width: auto;
+      height: 52px;
+      max-width: 210px;
+      object-fit: contain;
+      object-position: left center;
+      flex: 0 0 auto;
+    }
+
+    .logo-text h1 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--primary-tn-blue);
+    }
+
+    .logo-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .header-actions {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .nav-btn {
+      background: #F7FAFC;
+      border: 1px solid #D7E3EC;
+      color: var(--primary-tn-blue);
+      padding: 7px 13px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      min-width: max-content;
+    }
+
+    .nav-btn:hover {
+      background: var(--near-miss-bg);
+      border-color: #B9D4E6;
+    }
+
+    .badge-count {
+      background: var(--accent-gold);
+      color: white;
+      font-size: 0.78rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+    }
+
+    .lang-toggle {
+      background: #F0F6F9;
+      border: 1px solid #D7E3EC;
+      padding: 3px;
+      border-radius: var(--radius-full);
+      display: flex;
+      gap: 4px;
+      flex: 0 0 auto;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--primary-tn-blue);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .lang-btn.active {
+      background: var(--primary-tn-blue);
+      color: var(--primary-tn-blue);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(11, 79, 138, 0.2);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #083B66 0%, #0B4F8A 72%, #147D72 100%);
+      color: #FFFFFF;
+      padding: 3.4rem 1rem 4.8rem 1rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(254, 243, 199, 0.2);
+      border: 1px solid var(--accent-gold);
+      color: #FDE68A;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3.35rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .hero-desc {
+      font-size: 1.08rem;
+      color: #DBEAFE;
+      max-width: 800px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    /* Persona Quick Buttons */
+    .persona-bar {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.9rem 1.2rem;
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .persona-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .chip-btn {
+      background: #FFFFFF;
+      color: var(--primary-tn-blue);
+      border: none;
+      padding: 7px 15px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.15s ease;
+    }
+
+    .chip-btn:hover {
+      transform: translateY(-2px);
+      background: var(--accent-gold-light);
+      color: #92400E;
+    }
+
+    /* Layout Container & Grid */
+    .main-container {
+      max-width: 1240px;
+      margin: -2.6rem auto 0 auto;
+      padding: 0 1rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .content-grid > * {
+      min-width: 0;
+    }
+
+    @media (max-width: 940px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-box {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      min-width: 0;
+    }
+
+    @media (min-width: 941px) {
+      .basic-details-card {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+    }
+
+    @media (max-width: 940px) {
+      .header-container {
+        align-items: stretch;
+      }
+
+      .logo-area {
+        justify-content: center;
+      }
+
+      .header-actions {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header {
+        padding: 0.75rem;
+      }
+
+      .header-actions {
+        gap: 0.35rem;
+      }
+
+      .nav-btn {
+        padding: 6px 9px;
+        font-size: 0.8rem;
+        min-width: 0;
+        white-space: normal;
+      }
+
+      .logo-image {
+        height: 44px;
+        max-width: min(190px, 70vw);
+      }
+
+      .search-input-group {
+        flex-wrap: wrap;
+      }
+
+      .search-input-group .form-control {
+        flex: 1 1 100%;
+        width: 100% !important;
+        min-width: 0;
+      }
+    }
+
+    /* Search & Filter Bar */
+    .search-filter-section {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-md);
+      font-size: 0.98rem;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary-tn-blue);
+      outline: none;
+    }
+
+    .preset-query-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .preset-chip {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #E2E8F0;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .preset-chip:hover {
+      background: #E2E8F0;
+      color: var(--primary-tn-blue);
+    }
+
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .cat-pill {
+      background: var(--bg-slate);
+      border: 1px solid var(--border-light);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .cat-pill.active {
+      background: var(--primary-tn-blue);
+      color: white;
+      border-color: var(--primary-tn-blue);
+    }
+
+    /* Progressive 2-Step Form Styles */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 46px;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #CBD8E2;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-tn-blue);
+      box-shadow: 0 0 0 3px rgba(11, 79, 138, 0.12);
+      outline: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--primary-tn-blue);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.95rem;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(11, 79, 138, 0.2);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-tn-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11, 79, 138, 0.24);
+    }
+
+    /* Scheme Cards & myScheme Layout */
+    .scheme-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      margin-bottom: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      overflow-wrap: anywhere;
+    }
+
+    .scheme-card h4 {
+      overflow-wrap: anywhere;
+    }
+
+    .scheme-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #BDD3E1;
+    }
+
+    .scheme-card.fully-eligible {
+      border-left: 6px solid var(--success-green);
+    }
+
+    .scheme-card.almost-eligible {
+      border-left: 6px solid var(--near-miss-purple);
+      background: #FFFFFF;
+    }
+
+    .meta-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .source-badge {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .verified-tag {
+      font-size: 0.78rem;
+      color: #64748B;
+      font-weight: 700;
+      background: #F1F5F9;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .disclaimer-box {
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      color: #B45309;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .benefit-banner {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1px solid #FCD34D;
+      color: #78350F;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scheme-statistics {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: #FBFDFF;
+    }
+
+    .scheme-statistics-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .scheme-statistics-title {
+      color: var(--primary-tn-blue);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .demo-statistics-label {
+      color: #92400E;
+      background: #FEF3C7;
+      border: 1px solid #FCD34D;
+      border-radius: var(--radius-full);
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .statistics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .statistics-item {
+      padding: 0.7rem 0.55rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border-light);
+    }
+
+    .statistics-item.views { color: #1D4ED8; border-color: #BFDBFE; background: #EFF6FF; }
+    .statistics-item.applications { color: #C2410C; border-color: #FED7AA; background: #FFF7ED; }
+    .statistics-item.approved { color: #15803D; border-color: #BBF7D0; background: #F0FDF4; }
+
+    .statistics-icon { display: block; font-size: 1.15rem; }
+    .statistics-number { display: block; font-size: 1.15rem; font-weight: 800; line-height: 1.25; }
+    .statistics-label { display: block; font-size: 0.72rem; font-weight: 700; color: currentColor; }
+
+    .insights-modal-title { color: var(--primary-tn-blue); font-size: 1.35rem; font-weight: 800; }
+    .insights-intro { color: var(--text-muted); margin-bottom: 1rem; }
+    .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; }
+    .insight-card { padding: 1rem 0.75rem; border: 1px solid var(--border-light); border-radius: var(--radius-md); text-align: center; background: white; }
+    .insight-card.views { border-top: 4px solid #2563EB; }
+    .insight-card.applications { border-top: 4px solid #EA580C; }
+    .insight-card.approved { border-top: 4px solid #16A34A; }
+    .insight-card.rate { border-top: 4px solid var(--accent-gold); }
+    .insight-card .statistics-number { font-size: 1.55rem; margin: 0.3rem 0; }
+    .insight-progress { height: 8px; background: #E2E8F0; border-radius: var(--radius-full); overflow: hidden; margin-top: 1rem; }
+    .insight-progress-bar { height: 100%; background: linear-gradient(90deg, #EA580C, #16A34A); border-radius: inherit; }
+
+    @media (max-width: 620px) {
+      .scheme-statistics-header { align-items: flex-start; flex-direction: column; }
+      .insights-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Document Checklist */
+    .doc-section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-light);
+    }
+
+    .doc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      background: #F8FAFC;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+    }
+
+    .doc-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--success-green);
+    }
+
+    /* Card Footer & Action Buttons Grid */
+    .card-footer {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: #F1F5F9;
+      color: var(--primary-tn-blue);
+      border: 1px solid var(--border-accent);
+      padding: 7px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: #E2E8F0;
+    }
+
+    .btn-apply-primary {
+      background: var(--primary-tn-blue);
+      color: white;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-apply-primary:hover {
+      background: var(--primary-tn-hover);
+    }
+
+    .eligibility-status {
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      background: #F8FAFC;
+      margin-bottom: 1rem;
+    }
+
+    .eligibility-status.verified {
+      border-color: #BBF7D0;
+      background: #F0FDF4;
+    }
+
+    .eligibility-status.unverified {
+      border-color: #FCD34D;
+      background: #FFFBEB;
+    }
+
+    .eligibility-criterion {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.9rem;
+      background: white;
+    }
+
+    .eligibility-criterion.met {
+      border-color: #BBF7D0;
+      background: #F0FDF4;
+    }
+
+    .eligibility-criterion.not-met {
+      border-color: #FECACA;
+      background: #FEF2F2;
+    }
+
+    .eligibility-criterion.missing {
+      border-color: #FCD34D;
+      background: #FFFBEB;
+    }
+
+    .eligibility-criterion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .eligibility-criterion h4 {
+      color: var(--primary-tn-blue);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .result-badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .result-badge.met { background: #DCFCE7; color: #15803D; }
+    .result-badge.not-met { background: #FEE2E2; color: #B91C1C; }
+    .result-badge.missing { background: #FEF3C7; color: #B45309; }
+
+    .eligibility-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .eligibility-input-row select {
+      flex: 1 1 220px;
+      min-width: 180px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius-sm);
+      background: white;
+      color: var(--text-main);
+    }
+
+    .mini-btn {
+      background: var(--primary-tn-blue);
+      color: white;
+      border: none;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 200;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 940px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 2px solid var(--bg-slate);
+    }
+
+    .close-btn {
+      background: var(--bg-slate);
+      border: none;
+      font-size: 1.4rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation Bar -->
+  <header>
+    <div class="header-container">
+      <div class="logo-area" onclick="location.reload()">
+        <img class="logo-image" src="logo.png" alt="SchemeFinder">
+        <div class="logo-text">
+          <h1 id="appTitle">SchemeFinder</h1>
+          <p id="appSubtitle">myScheme.gov.in & தமிழ்நாடு அரசு திட்டங்களின் AI தளம்</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="nav-btn" onclick="openCentresModal()">
+          <span>📍</span> <span id="navCentresBtnText">இ-சேவை மையங்கள்</span>
+        </button>
+
+        <button class="nav-btn" id="alertsNavBtn" onclick="openAlertsModal()">
+          <span>🔔</span> <span id="navAlertsBtnText">அறிவிப்புகள்</span>
+          <span class="badge-count" id="alertsCount">3</span>
+        </button>
+
+        <button class="nav-btn" id="savedTabBtn" onclick="toggleSavedModal()">
+          <span>❤️</span> <span id="savedBtnText">சேமித்தவை</span>
+          <span class="badge-count" id="savedCount">0</span>
+        </button>
+
+        <button class="nav-btn" style="background:rgba(217,119,6,0.3); border-color:var(--accent-gold);" onclick="openAdminModal()">
+          <span>⚙️</span> <span id="adminBtnText">தரவு நிர்வாகம் (Admin)</span>
+        </button>
+
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="langTaBtn" onclick="switchLanguage('ta')">தமிழ்</button>
+          <button class="lang-btn" id="langEnBtn" onclick="switchLanguage('en')">English</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header Section -->
+  <section class="hero-banner">
+    <div class="hero-inner">
+      <span class="hero-tag" id="heroTag">🏛️ அதிகாரப்பூர்வ myScheme.gov.in & தமிழ்நாடு அரசு நேரடித் தரவுத்தளம்</span>
+      <h2 class="hero-title" id="heroTitle">அரசுத் திட்டங்களை எளிதாகக் கண்டறியும் AI குடிமக்கள் வழிகாட்டி</h2>
+      <p class="hero-desc" id="heroDesc">
+        மத்திய மற்றும் மாநில அரசின் ஆயிரக்கணக்கான அதிகாரப்பூர்வ திட்டங்களை உங்களின் சுயவிவரத்திற்கு ஏற்ப AI தானாகவே ஆய்வு செய்து தகுதியான திட்டங்களைக் கண்டறிய உதவுகிறது.
+      </p>
+
+          <div class="persona-bar">
+        <div id="personaPrompt" style="font-size:0.85rem; color:#93C5FD; margin-bottom:6px; font-weight:700;">⚡ மாதிரி சுயவிவரங்கள் (ஒரே கிளிக்கில் சோதிக்க):</div>
+        <div class="persona-chips">
+          <button class="chip-btn" onclick="applyPersona('student')">👩‍🎓 <span id="persona1">கல்லூரி மாணவி (Pudhumai Penn)</span></button>
+          <button class="chip-btn" onclick="applyPersona('farmer')">👨‍🌾 <span id="persona2">விவசாயி (PM Kisan)</span></button>
+          <button class="chip-btn" onclick="applyPersona('homemaker')">👩‍🍳 <span id="persona3">குடும்பத் தலைவி (Magalir Urimai)</span></button>
+          <button class="chip-btn" onclick="applyPersona('disabled')">♿ <span id="persona4">மாற்றுத்திறனாளி (Disability Pension)</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid Layout -->
+  <main class="main-container">
+    <div class="content-grid">
+
+      <!-- Left Column: 2-Step Progressive Dynamic Form -->
+      <section class="card-box basic-details-card">
+        <div class="step-indicator" id="stepIndicator">
+          <span>📍 படி 1 / 2: அடிப்படை விவரங்கள்</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h3 style="font-size:1.3rem; font-weight:800; color:var(--primary-tn-blue);" id="formTitle">📋 சுயவிவரத் தகவல்கள்</h3>
+          <button class="nav-btn" style="background:#EFF6FF; color:#2563EB; border-color:#BFDBFE;" onclick="startVoiceInput()">🎙️ Voice</button>
+        </div>
+
+        <form id="progressiveForm" onsubmit="handleFormSubmit(event)">
+          <!-- STEP 1: Basic Form Fields (Always Asked) -->
+          <div id="step1Fields">
+            <div class="form-group">
+              <label class="form-label" id="lblAge">வயது (Age):</label>
+              <input type="number" id="ageInput" class="form-control" min="1" max="110" value="20" required onchange="triggerDynamicFieldAnalysis()">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="lblState">மாநிலம் (State):</label>
+              <select id="stateSelect" class="form-control" required onchange="triggerDynamicFieldAnalysis()">
+                <option value="Tamil Nadu" selected>Tamil Nadu (தமிழ்நாடு)</option>
+                <option value="All States">All India (அனைத்து மாநிலங்கள்)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="lblDistrict">மாவட்டம் (TN District):</label>
+              <select id="districtSelect" class="form-control" required>
+                <!-- Filled via JS -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="lblOccupation">தொழில் / தகுதி (Occupation):</label>
+              <select id="occupationSelect" class="form-control" onchange="triggerDynamicFieldAnalysis()" required>
+                <option value="student" selected>மாணவர் / கல்லூரி மாணவி (Student)</option>
+                <option value="farmer">விவசாயி / விவசாயத் தொழிலாளி (Farmer)</option>
+                <option value="homemaker">குடும்பத் தலைவி / இல்லத்தரசி (Homemaker)</option>
+                <option value="vendor">தெருவோர வியாபாரி (Street Vendor)</option>
+                <option value="unemployed">வேலையற்ற இளைஞர் (Unemployed Youth)</option>
+                <option value="salaried">தனியார் / அரசு ஊழியர் (Salaried Worker)</option>
+                <option value="retired">ஓய்வுபெற்றவர் / முதியோர் (Retired / Senior)</option>
+                <option value="artisan">கைவினைஞர் / நெசவாளர் (Artisan / Weaver)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 2: Dynamically Rendered AI Follow-Up Fields -->
+          <div id="step2DynamicFields" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--border-light);">
+            <div style="font-size:0.85rem; font-weight:800; color:var(--success-green); margin-bottom:0.75rem; display:flex; align-items:center; gap:6px;">
+              <span id="dynamicFormText">✨ AI தானாகத் உருவாக்கிய கூடுதல் வினாக்கள் (Dynamic Form)</span>
+            </div>
+
+            <!-- Dynamic field containers -->
+            <div id="fieldGender" class="form-group">
+              <label class="form-label" id="lblGender">பாலினம் (Gender):</label>
+              <select id="genderSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="female">பெண் (Female)</option>
+                <option value="male">ஆண் (Male)</option>
+                <option value="transgender">திருநங்கை (Transgender)</option>
+              </select>
+            </div>
+
+            <div id="fieldIncome" class="form-group">
+              <label class="form-label" id="lblIncome">ஆண்டு குடும்ப வருமானம் (Annual Income):</label>
+              <input type="number" id="incomeSelect" class="form-control" min="0" step="1" placeholder="ஆண்டு வருமானத்தை உள்ளிடவும் (Enter annual income)">
+            </div>
+
+            <div id="fieldEducation" class="form-group">
+              <label class="form-label" id="lblEducation">கல்வித் தகுதி (Education Level):</label>
+              <select id="educationSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="school_below">8-ஆம் வகுப்பு வரை</option>
+                <option value="sslc">10-ஆம் வகுப்பு (10th Pass)</option>
+                <option value="hsc">12-ஆம் வகுப்பு (12th Pass)</option>
+                <option value="diploma">டிப்ளமோ (Diploma)</option>
+                <option value="degree">பட்டப்படிப்பு (Under Graduate / College)</option>
+                <option value="pg">முதுகலை (Post Graduate)</option>
+              </select>
+            </div>
+
+            <div id="fieldCaste" class="form-group">
+              <label class="form-label" id="lblCaste">சமுதாயப் பிரிவு (Category):</label>
+              <select id="casteSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="sc_st">SC / ST (ஆதிதிராவிடர் / பழங்குடியினர்)</option>
+                <option value="mbc">MBC / DNC (மிகவும் பிற்படுத்தப்பட்டோர்)</option>
+                <option value="bc">BC (பிற்படுத்தப்பட்டோர்)</option>
+                <option value="bcm">BC Muslim</option>
+                <option value="general">General / இதர</option>
+              </select>
+            </div>
+
+            <div id="fieldDisability" class="form-group hidden">
+              <label class="form-label" id="lblDisability">மாற்றுத்திறனாளி தகுதி (Disability Status):</label>
+              <select id="disabilitySelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="no">இல்லை (No)</option>
+                <option value="yes">ஆம் (40% அல்லது அதற்கு மேல்)</option>
+              </select>
+            </div>
+
+            <div id="fieldMarital" class="form-group hidden">
+              <label class="form-label" id="lblMarital">திருமண நிலை (Marital Status):</label>
+              <select id="maritalSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="single">திருமணமாகாதவர் (Single)</option>
+                <option value="married">திருமணமானவர் (Married)</option>
+                <option value="widow">கைம்பெண் / கைவிடப்பட்டவர் (Widow)</option>
+              </select>
+            </div>
+
+            <div id="fieldLandOwner" class="form-group hidden">
+              <label class="form-label" id="lblLandOwner">நில உரிமை (Land Ownership):</label>
+              <select id="landOwnerSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="yes">ஆம் (Yes)</option>
+                <option value="no">இல்லை (No)</option>
+              </select>
+            </div>
+
+            <div id="fieldOwnPuccaHouse" class="form-group hidden">
+              <label class="form-label" id="lblOwnPuccaHouse">சொந்தமாக உறுதியான வீடு உள்ளதா? (Own a Pucca House?):</label>
+              <select id="ownPuccaHouseSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="yes">ஆம் (Yes)</option>
+                <option value="no">இல்லை (No)</option>
+              </select>
+            </div>
+
+            <div id="fieldSchoolType" class="form-group hidden">
+              <label class="form-label" id="lblSchoolType">தமிழ்நாடு அரசுப் பள்ளியில் 6-12ஆம் வகுப்பு வரை படித்தீர்களா? (TN Govt School, grades 6-12?):</label>
+              <select id="schoolTypeSelect" class="form-control">
+                <option value="" selected>தேர்வு செய்க (Select)</option>
+                <option value="TN Govt School (6th to 12th)">ஆம் (Yes)</option>
+                <option value="no">இல்லை (No)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span>✨</span> <span id="submitBtnText">தகுதியான திட்டங்களை ஆய்வு செய்</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Right Column: Live Search, Preset Chips, Categories & Scheme Cards -->
+      <section>
+        <!-- Search & Filter Bar -->
+        <div class="search-filter-section">
+          <div class="search-input-group">
+            <input type="text" id="searchInput" class="search-input" placeholder="திட்டப் பெயர் அல்லது சொல் தேடவும் (Scholarship, Farmer, Pudhumai Penn, Health...)" oninput="handleSearchInput()">
+            <select id="govtLevelSelect" class="form-control" style="width: auto; padding: 6px 12px;" onchange="handleSearchInput()">
+              <option value="all">அனைத்து அரசுகள் (All Govt)</option>
+              <option value="State">தமிழ்நாடு அரசு (State TN)</option>
+              <option value="Central">மத்திய அரசு (Central Govt)</option>
+            </select>
+          </div>
+
+          <!-- Quick Search Chips -->
+          <div class="preset-query-chips">
+            <span style="font-size:0.8rem; font-weight:700; color:#64748B; align-self:center;">உடனடித் தேடல்:</span>
+            <button class="preset-chip" onclick="setSearchTerm('Pudhumai Penn')">👩‍🎓 Pudhumai Penn</button>
+            <button class="preset-chip" onclick="setSearchTerm('PM Kisan')">🌾 PM Kisan</button>
+            <button class="preset-chip" onclick="setSearchTerm('Magalir Urimai')">👩 Magalir Urimai</button>
+            <button class="preset-chip" onclick="setSearchTerm('Scholarship')">🎓 Scholarship</button>
+            <button class="preset-chip" onclick="setSearchTerm('Mudra Loan')">💼 Mudra Loan</button>
+            <button class="preset-chip" onclick="setSearchTerm('Health Insurance')">🏥 Health</button>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="category-pills" id="categoryPills">
+            <button class="cat-pill active" onclick="selectCategory('all', this)">அனைத்தும் (All)</button>
+            <button class="cat-pill" onclick="selectCategory('education', this)">கல்வி (Education)</button>
+            <button class="cat-pill" onclick="selectCategory('agriculture', this)">விவசாயம் (Agriculture)</button>
+            <button class="cat-pill" onclick="selectCategory('women & child', this)">மகளிர் நலன் (Women)</button>
+            <button class="cat-pill" onclick="selectCategory('health', this)">மருத்துவம் (Health)</button>
+            <button class="cat-pill" onclick="selectCategory('disability', this)">மாற்றுத்திறனாளி (Disability)</button>
+            <button class="cat-pill" onclick="selectCategory('entrepreneurship', this)">வணிகம் / கடன் (Business)</button>
+            <button class="cat-pill" onclick="selectCategory('senior citizens', this)">முதியோர் (Senior)</button>
+            <button class="cat-pill" onclick="selectCategory('skill development', this)">திறன் மேம்பாடு (Skill)</button>
+          </div>
+        </div>
+
+        <!-- Scheme Cards Grid Container -->
+        <div id="schemesGrid">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Floating Comparison Bar -->
+  <div id="compareBar" style="position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); background:var(--primary-tn-blue); color:white; padding:1rem 1.75rem; border-radius:var(--radius-full); box-shadow:0 10px 30px rgba(0,0,0,0.3); display:flex; align-items:center; gap:1.25rem; z-index:90; border:2px solid var(--accent-gold);" class="hidden">
+    <span style="font-weight:800;" id="compareBarText">2 திட்டங்கள் தேர்ந்தெடுக்கப்பட்டுள்ளன</span>
+    <button onclick="openCompareModal()" style="background:var(--accent-gold); color:white; border:none; padding:8px 18px; border-radius:var(--radius-full); font-weight:800; cursor:pointer;">ஒப்பிட்டுப் பார் ⚖️</button>
+    <button onclick="clearCompareSelection()" style="background:rgba(255,255,255,0.2); border:none; color:white; padding:6px 12px; border-radius:var(--radius-full); cursor:pointer;">✕</button>
+  </div>
+
+  <!-- Modal 1: Nearest Application Centre Locator (e-Sevai / CSC) -->
+  <div id="centresModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">📍 அருகில் உள்ள இ-சேவை மையங்கள் (CSC Centres)</h3>
+        <button class="close-btn" onclick="closeCentresModal()">✕</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; background:var(--bg-slate); padding:1rem; border-radius:var(--radius-md);">
+        <div>
+          <label style="font-weight:700; font-size:0.85rem;">மாவட்டம் (District):</label>
+          <select id="modalDistrictSelect" class="form-control" onchange="loadCentres(this.value)">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+        <div>
+          <label style="font-weight:700; font-size:0.85rem;">மைய வகை (Centre Type):</label>
+          <select id="modalCentreTypeSelect" class="form-control" onchange="loadCentres(document.getElementById('modalDistrictSelect').value)">
+            <option value="all">அனைத்து மையங்கள் (All)</option>
+            <option value="csc">இ-சேவை மையம் (CSC)</option>
+            <option value="taluk">தாலுகா அலுவலகம் (Taluk Office)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="centresListGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Proactive Alerts & Reminders -->
+  <div id="alertsModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">🔔 என் அறிவிப்புகள் & நினைவூட்டல்கள்</h3>
+        <button class="close-btn" onclick="closeAlertsModal()">✕</button>
+      </div>
+      <div id="alertsList">
+        <div style="background:#FFFFFF; border:1px solid var(--border-light); border-left:5px solid var(--accent-gold); padding:1rem; border-radius:var(--radius-md); margin-bottom:0.75rem;">
+          <div style="font-weight:800; color:var(--primary-tn-blue);">⏰ புதுமைப் பெண் திட்டம் - கல்லூரி சேர்க்கை சரிபார்ப்பு</div>
+          <div style="font-size:0.92rem;">மாணவிகள் விண்ணப்பிக்கவும் EMIS சரிபார்க்கவும் கடைசி நாள் அக்டோபர் 31.</div>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid var(--border-light); border-left:5px solid var(--accent-gold); padding:1rem; border-radius:var(--radius-md); margin-bottom:0.75rem;">
+          <div style="font-weight:800; color:var(--primary-tn-blue);">🔄 PM-Kisan e-KYC புதுப்பித்தல் நினைவூட்டல்</div>
+          <div style="font-size:0.92rem;">அடுத்த தவணைத் தொகை வரவு வைக்க ஆதார் e-KYC சரிபார்ப்பை பூர்த்தி செய்யவும்.</div>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid var(--border-light); border-left:5px solid var(--accent-gold); padding:1rem; border-radius:var(--radius-md);">
+          <div style="font-weight:800; color:var(--primary-tn-blue);">🆕 தமிழ்ப் புதல்வன் திட்டம் நேரலை</div>
+          <div style="font-size:0.92rem;">அரசுப் பள்ளியில் படித்த ஆண் கல்லூரி மாணவர்களுக்கு மாதம் ₹1,000 திட்டம் நேரலையில் உள்ளது.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Comparison Matrix -->
+  <div id="compareModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">⚖️ திட்டங்களின் ஒப்பீடு (Scheme Comparison)</h3>
+        <button class="close-btn" onclick="closeCompareModal()">✕</button>
+      </div>
+      <div id="compareModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Saved Schemes -->
+  <div id="savedModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">❤️ என் சேமித்த திட்டங்கள்</h3>
+        <button class="close-btn" onclick="closeSavedModal()">✕</button>
+      </div>
+      <div id="savedModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal 5: AI Explanation Modal -->
+  <div id="explainModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:640px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.3rem; font-weight:800; color:var(--primary-tn-blue);">🤖 AI எளிய தமிழ் விளக்கம் (AI Terminology Assistant)</h3>
+        <button class="close-btn" onclick="closeExplainModal()">✕</button>
+      </div>
+      <div id="explainModalBody">
+        <!-- Loaded via API -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Full Eligibility Check -->
+  <div id="fullEligibilityModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:820px;">
+      <div class="modal-header">
+        <h3 id="fullEligibilityTitle" style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">✅ Full Eligibility Check</h3>
+        <button class="close-btn" onclick="closeFullEligibility()">✕</button>
+      </div>
+      <div id="fullEligibilityBody"></div>
+    </div>
+  </div>
+
+  <div id="eligibilityModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:820px;">
+      <div class="modal-header">
+        <h3 id="eligibilityModalTitle" style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">✅ Full Eligibility Check</h3>
+        <button class="close-btn" onclick="closeEligibilityModal()">✕</button>
+      </div>
+      <div id="eligibilityModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Public Scheme Insights -->
+  <div id="schemeDetailsModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:820px;">
+      <div class="modal-header">
+        <h3 id="schemeDetailsTitle" class="insights-modal-title">Scheme Insights</h3>
+        <button class="close-btn" onclick="closeSchemeDetails()">✕</button>
+      </div>
+      <div id="schemeDetailsBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Admin Data Verification & Management Portal -->
+  <div id="adminModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:980px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--primary-tn-blue);">⚙️ அரசுத் திட்ட தரவு நிர்வாக மையம் (Admin Dashboard)</h3>
+        <button class="close-btn" onclick="closeAdminModal()">✕</button>
+      </div>
+      
+      <div style="background:var(--bg-slate); padding:1rem; border-radius:var(--radius-md); margin-bottom:1rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+        <button onclick="bulkVerifySchemes()" style="background:var(--success-green); color:white; border:none; padding:8px 16px; border-radius:var(--radius-full); font-weight:800; cursor:pointer;">
+          ✅ அனைத்துத் திட்டங்களையும் இன்று சரிபார்க்கப்பட்டதாக மாற்று (Bulk Verify Today)
+        </button>
+
+        <a href="/api/admin/export" target="_blank" style="background:var(--primary-tn-blue); color:white; border:none; padding:8px 16px; border-radius:var(--radius-full); font-weight:800; text-decoration:none; display:inline-block;">
+          📥 JSON தரவை பதிவிறக்கு (Export Database)
+        </a>
+
+        <label style="background:var(--accent-gold); color:white; padding:8px 16px; border-radius:var(--radius-full); font-weight:800; cursor:pointer;">
+          📤 JSON/CSV கோப்பை பதிவேற்று (Import Data)
+          <input type="file" id="adminImportInput" accept=".json,.csv" style="display:none;" onchange="handleAdminImport(event)">
+        </label>
+      </div>
+
+      <div id="adminSchemesTableContainer" style="overflow-x:auto;">
+        <!-- Loaded via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic JavaScript -->
+  <script>
+    let currentLang = 'ta';
+    let selectedCategory = 'all';
+    let selectedDistrict = 'chennai';
+    let savedSchemeIds = JSON.parse(localStorage.getItem('schemefinder_saved') || '[]');
+    let checkedDocsState = JSON.parse(localStorage.getItem('schemefinder_docs') || '{}');
+    let selectedCompareIds = [];
+    let masterSchemesList = [];
+
+    const tnDistricts = [
+      { id: "ariyalur", ta: "அரியலூர்", en: "Ariyalur" },
+      { id: "chengalpattu", ta: "செங்கல்பட்டு", en: "Chengalpattu" },
+      { id: "chennai", ta: "சென்னை", en: "Chennai" },
+      { id: "coimbatore", ta: "கோயம்புத்தூர்", en: "Coimbatore" },
+      { id: "cuddalore", ta: "கடலூர்", en: "Cuddalore" },
+      { id: "dharmapuri", ta: "தர்மபுரி", en: "Dharmapuri" },
+      { id: "dindigul", ta: "திண்டுக்கல்", en: "Dindigul" },
+      { id: "erode", ta: "ஈரோடு", en: "Erode" },
+      { id: "kallakurichi", ta: "கள்ளக்குறிச்சி", en: "Kallakurichi" },
+      { id: "kanchipuram", ta: "காஞ்சீபுரம்", en: "Kanchipuram" },
+      { id: "kanyakumari", ta: "கன்யாகுமரி", en: "Kanyakumari" },
+      { id: "karur", ta: "கரூர்", en: "Karur" },
+      { id: "krishnagiri", ta: "கிருஷ்ணகிரி", en: "Krishnagiri" },
+      { id: "madurai", ta: "மதுரை", en: "Madurai" },
+      { id: "mayiladuthurai", ta: "மயிலாடுதுறை", en: "Mayiladuthurai" },
+      { id: "nagapattinam", ta: "நாகப்பட்டினம்", en: "Nagapattinam" },
+      { id: "namakkal", ta: "நாமக்கல்", en: "Namakkal" },
+      { id: "nilgiris", ta: "நீலகிரி", en: "Nilgiris" },
+      { id: "perambalur", ta: "பெரம்பலூர்", en: "Perambalur" },
+      { id: "pudukkottai", ta: "புதுக்கோட்டை", en: "Pudukkottai" },
+      { id: "ramanathapuram", ta: "இராமநாதபுரம்", en: "Ramanathapuram" },
+      { id: "ranipet", ta: "ராணிப்பேட்டை", en: "Ranipet" },
+      { id: "salem", ta: "சேலம்", en: "Salem" },
+      { id: "sivagangai", ta: "சிவகங்கை", en: "Sivagangai" },
+      { id: "tenkasi", ta: "தென்காசி", en: "Tenkasi" },
+      { id: "thanjavur", ta: "தஞ்சாவூர்", en: "Thanjavur" },
+      { id: "theni", ta: "தேனி", en: "Theni" },
+      { id: "thoothukudi", ta: "தூத்துக்குடி", en: "Thoothukudi" },
+      { id: "tiruchirappalli", ta: "திருச்சிராப்பள்ளி", en: "Tiruchirappalli" },
+      { id: "tirunelveli", ta: "திருநெல்வேலி", en: "Tirunelveli" },
+      { id: "tirupathur", ta: "திருப்பத்தூர்", en: "Tirupathur" },
+      { id: "tiruppur", ta: "திருப்பூர்", en: "Tiruppur" },
+      { id: "tiruvallur", ta: "திருவள்ளூர்", en: "Tiruvallur" },
+      { id: "tiruvannamalai", ta: "திருவண்ணாமலை", en: "Tiruvannamalai" },
+      { id: "tiruvarur", ta: "திருவாரூர்", en: "Tiruvarur" },
+      { id: "vellore", ta: "வேலூர்", en: "Vellore" },
+      { id: "viluppuram", ta: "விழுப்புரம்", en: "Viluppuram" },
+      { id: "virudhunagar", ta: "விருதுநகர்", en: "Virudhunagar" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      populateDistricts();
+      document.getElementById("savedCount").textContent = savedSchemeIds.length;
+      triggerDynamicFieldAnalysis();
+      fetchSchemesFromAPI();
+    });
+
+    function populateDistricts() {
+      const select1 = document.getElementById("districtSelect");
+      const select2 = document.getElementById("modalDistrictSelect");
+      select1.innerHTML = "";
+      select2.innerHTML = "";
+
+      const validDistrict = tnDistricts.some(d => d.id === selectedDistrict) ? selectedDistrict : 'chennai';
+      selectedDistrict = validDistrict;
+
+      tnDistricts.forEach(d => {
+        const text = currentLang === 'ta' ? `${d.ta} (${d.en})` : d.en;
+        const opt1 = document.createElement("option");
+        opt1.value = d.id;
+        opt1.textContent = text;
+        select1.appendChild(opt1);
+
+        const opt2 = document.createElement("option");
+        opt2.value = d.id;
+        opt2.textContent = text;
+        select2.appendChild(opt2);
+      });
+
+      select1.value = selectedDistrict;
+      select2.value = selectedDistrict;
+
+      select1.onchange = () => { selectedDistrict = select1.value; };
+      select2.onchange = () => { selectedDistrict = select2.value; };
+    }
+
+    // Step 2: AI Dynamic Field Generator Analysis via API
+    async function triggerDynamicFieldAnalysis() {
+      const occ = document.getElementById("occupationSelect").value;
+      const age = document.getElementById("ageInput").value;
+      try {
+        const res = await fetch('/api/dynamic-fields', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ occupation: occ, age: age })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const reqs = data.requiredFields;
+          document.getElementById("fieldGender").classList.toggle("hidden", !reqs.includes("gender"));
+          document.getElementById("fieldIncome").classList.toggle("hidden", !reqs.includes("income"));
+          document.getElementById("fieldEducation").classList.toggle("hidden", !reqs.includes("education"));
+          document.getElementById("fieldCaste").classList.toggle("hidden", !reqs.includes("caste"));
+          document.getElementById("fieldDisability").classList.toggle("hidden", !reqs.includes("disability"));
+          document.getElementById("fieldMarital").classList.toggle("hidden", !reqs.includes("marital"));
+          document.getElementById("fieldLandOwner").classList.toggle("hidden", !reqs.includes("landOwner"));
+          document.getElementById("fieldOwnPuccaHouse").classList.toggle("hidden", !reqs.includes("ownPuccaHouse"));
+          document.getElementById("fieldSchoolType").classList.toggle("hidden", !reqs.includes("schoolType"));
+        }
+      } catch (err) {
+        console.error("API error for dynamic fields:", err);
+      }
+    }
+
+    // Fetch Active Schemes from REST API
+    async function fetchSchemesFromAPI() {
+      const search = document.getElementById("searchInput").value;
+      const level = document.getElementById("govtLevelSelect").value;
+      
+      let apiUrl = `/api/schemes?status=ACTIVE`;
+      if (selectedCategory !== 'all') apiUrl += `&category=${encodeURIComponent(selectedCategory)}`;
+      if (level !== 'all') apiUrl += `&level=${encodeURIComponent(level)}`;
+      if (search) apiUrl += `&search=${encodeURIComponent(search)}`;
+
+      try {
+        const res = await fetch(apiUrl);
+        const json = await res.json();
+        if (json.success) {
+          masterSchemesList = json.data;
+          renderSchemes(masterSchemesList);
+        }
+      } catch (err) {
+        console.error("Error fetching schemes from API:", err);
+      }
+    }
+
+    // Form Match Submission
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const profile = {
+        age: document.getElementById("ageInput").value,
+        state: document.getElementById("stateSelect").value,
+        district: document.getElementById("districtSelect").value,
+        occupation: document.getElementById("occupationSelect").value,
+        gender: document.getElementById("genderSelect").value,
+        income: document.getElementById("incomeSelect").value,
+        education: document.getElementById("educationSelect").value,
+        caste: document.getElementById("casteSelect").value,
+        disability: document.getElementById("disabilitySelect").value,
+        marital: document.getElementById("maritalSelect").value,
+        landOwner: document.getElementById("landOwnerSelect").value,
+        ownPuccaHouse: document.getElementById("ownPuccaHouseSelect").value,
+        schoolType: document.getElementById("schoolTypeSelect").value
+      };
+
+      try {
+        const res = await fetch('/api/schemes/match', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(profile)
+        });
+        const json = await res.json();
+        if (json.success) {
+          renderMatchResults(json.data, json.incomplete || []);
+        }
+      } catch (err) {
+        console.error("Error matching schemes:", err);
+      }
+    }
+
+    function renderMatchResults(matchList, incomplete = []) {
+      const container = document.getElementById("schemesGrid");
+      container.innerHTML = "";
+
+      const labels = currentLang === 'en' ? {
+        title: 'Schemes You May Be Eligible For',
+        missingTitle: 'More information is required before final filtering.',
+        missingPrompt: 'Please complete the dynamic questions above and search again.',
+        missing: {
+          'Annual Family Income': 'Annual Family Income',
+          'Education Level': 'Education Level',
+          'Gender': 'Gender',
+          'Disability Status': 'Disability Status',
+          'Community Category': 'Community Category',
+          'Marital Status': 'Marital Status',
+          'Land Ownership': 'Land Ownership',
+          'Pucca House Ownership': 'Pucca House Ownership',
+          'School Type': 'TN Government School (grades 6-12)',
+          'State': 'State',
+          'Age': 'Age',
+          'Occupation': 'Occupation'
+        },
+        noMatch: 'No matching schemes found. Try updating your details or providing additional information.',
+        disclaimer: 'Final eligibility and approval are determined by the concerned government department.'
+      } : {
+        title: 'நீங்கள் தகுதி பெறக்கூடிய திட்டங்கள்',
+        missingTitle: 'இறுதி முடிவுக்கு முன் கூடுதல் தகவல் தேவை.',
+        missingPrompt: 'மேலே உள்ள கூடுதல் வினாக்களைப் பூர்த்தி செய்து மீண்டும் தேடவும்.',
+        missing: {
+          'Annual Family Income': 'ஆண்டு குடும்ப வருமானம்',
+          'Education Level': 'கல்வித் தகுதி',
+          'Gender': 'பாலினம்',
+          'Disability Status': 'மாற்றுத்திறனாளி நிலை',
+          'Community Category': 'சமுதாயப் பிரிவு',
+          'Marital Status': 'திருமண நிலை',
+          'Land Ownership': 'நில உரிமை',
+          'Pucca House Ownership': 'உறுதியான வீட்டு உரிமை',
+          'School Type': 'தமிழ்நாடு அரசுப் பள்ளியில் 6-12ஆம் வகுப்பு',
+          'State': 'மாநிலம்',
+          'Age': 'வயது',
+          'Occupation': 'தொழில்'
+        },
+        noMatch: 'பொருந்தும் திட்டங்கள் எதுவும் இல்லை. விவரங்களை மாற்றி அல்லது கூடுதல் தகவலை வழங்கி முயற்சிக்கவும்.',
+        disclaimer: 'இறுதி தகுதி மற்றும் ஒப்புதல் சம்பந்தப்பட்ட அரசு துறையால் தீர்மானிக்கப்படும்.'
+      };
+      const missingFields = [...new Set(incomplete.flatMap(item => item.missingFields || []))];
+
+      if (missingFields.length > 0) {
+        const notice = document.createElement('div');
+        notice.style.cssText = 'grid-column:1/-1; text-align:left; padding:1rem; background:var(--warning-amber-bg); border:1px solid #FCD34D; border-radius:var(--radius-md); margin-bottom:0.5rem;';
+        notice.innerHTML = `<strong>${labels.missingTitle}</strong><p style="margin:0.35rem 0;">${labels.missingPrompt}</p><strong>${currentLang === 'en' ? 'Missing:' : 'தேவையான தகவல்கள்:'}</strong><ul style="margin:0.25rem 0 0 1.25rem;">${missingFields.map(field => `<li>${labels.missing[field] || field}</li>`).join('')}</ul>`;
+        container.appendChild(notice);
+      }
+
+      if (matchList.length === 0 && missingFields.length === 0) {
+        container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; background:white; border-radius:var(--radius-lg);">🔍 ${labels.noMatch}</div>`;
+        return;
+      }
+
+      if (matchList.length === 0) return;
+
+      const resultsHeading = document.createElement('div');
+      resultsHeading.style.cssText = 'grid-column:1/-1; margin-bottom:0.25rem;';
+      resultsHeading.innerHTML = `<h3 style="font-size:1.2rem; color:var(--primary-tn-blue);">${labels.title} <span style="font-size:0.9rem;">(${matchList.length})</span></h3><p style="font-size:0.82rem; color:var(--text-muted);">${labels.disclaimer}</p>`;
+      container.appendChild(resultsHeading);
+
+      matchList.forEach(item => {
+        const card = createSchemeCardHTML(item.scheme, item.matchType, labels.disclaimer, item.reason);
+        container.appendChild(card);
+      });
+    }
+
+    function renderSchemes(list) {
+      const container = document.getElementById("schemesGrid");
+      container.innerHTML = "";
+
+      if (list.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:3rem; background:white; border-radius:var(--radius-lg);">🔍 ${currentLang === 'en' ? 'No schemes found.' : 'திட்டங்கள் எதுவும் காணப்படவில்லை.'}</div>`;
+        return;
+      }
+
+      list.forEach(s => {
+        const disclaimer = currentLang === 'en' ? 'Final eligibility is subject to verification by the respective government department.' : 'இறுதி தகுதி சம்பந்தப்பட்ட அரசு துறையின் சரிபார்ப்புக்கு உட்பட்டது.';
+        const card = createSchemeCardHTML(s, 'eligible', disclaimer);
+        container.appendChild(card);
+      });
+    }
+
+    function getSchemeStatistics(scheme) {
+      const statistics = scheme.statistics || scheme.stats || {};
+      return {
+        views: Number(statistics.views ?? statistics.viewed ?? 0),
+        applications: Number(statistics.applications ?? statistics.applied ?? 0),
+        approved: Number(statistics.approved ?? 0),
+        isDemo: statistics.isDemo !== false
+      };
+    }
+
+    function renderStatisticsMarkup(scheme, detailed = false) {
+      const statistics = getSchemeStatistics(scheme);
+      const approvalRate = statistics.applications > 0
+        ? Math.round((statistics.approved / statistics.applications) * 100)
+        : null;
+      const number = value => value.toLocaleString('en-IN');
+      const labels = currentLang === 'en'
+        ? { title: 'Scheme Statistics', views: 'People Viewed', applications: 'People Applied', approved: 'Applications Approved', rate: 'Approval Rate', demo: 'Demo Statistics', source: 'Aggregate scheme-level data' }
+        : { title: 'திட்ட புள்ளிவிவரங்கள்', views: 'பார்வையிட்டவர்கள்', applications: 'விண்ணப்பித்தவர்கள்', approved: 'ஒப்புதல் பெற்ற விண்ணப்பங்கள்', rate: 'ஒப்புதல் விகிதம்', demo: 'மாதிரி புள்ளிவிவரங்கள்', source: 'திட்ட அளவிலான ஒருங்கிணைந்த தரவு' };
+
+      if (detailed) {
+        return `
+          <p class="insights-intro">${statistics.isDemo ? labels.demo + ' · ' : ''}${labels.source}</p>
+          <div class="insights-grid">
+            <div class="insight-card views"><span class="statistics-icon">👁️</span><span class="statistics-number">${number(statistics.views)}</span><span class="statistics-label">${labels.views}</span></div>
+            <div class="insight-card applications"><span class="statistics-icon">📝</span><span class="statistics-number">${number(statistics.applications)}</span><span class="statistics-label">${labels.applications}</span></div>
+            <div class="insight-card approved"><span class="statistics-icon">✅</span><span class="statistics-number">${number(statistics.approved)}</span><span class="statistics-label">${labels.approved}</span></div>
+            ${approvalRate === null ? '' : `<div class="insight-card rate"><span class="statistics-icon">📊</span><span class="statistics-number">${approvalRate}%</span><span class="statistics-label">${labels.rate}</span></div>`}
+          </div>
+          ${approvalRate === null ? '' : `<div class="insight-progress" aria-label="${approvalRate}% ${labels.rate}"><div class="insight-progress-bar" style="width:${Math.min(approvalRate, 100)}%"></div></div>`}
+        `;
+      }
+
+      return `
+        <section class="scheme-statistics" aria-label="${labels.title}">
+          <div class="scheme-statistics-header">
+            <span class="scheme-statistics-title">${labels.title}</span>
+            ${statistics.isDemo ? `<span class="demo-statistics-label">${labels.demo}</span>` : ''}
+          </div>
+          <div class="statistics-grid">
+            <div class="statistics-item views"><span class="statistics-icon">👁️</span><span class="statistics-number">${number(statistics.views)}</span><span class="statistics-label">${labels.views}</span></div>
+            <div class="statistics-item applications"><span class="statistics-icon">📝</span><span class="statistics-number">${number(statistics.applications)}</span><span class="statistics-label">${labels.applications}</span></div>
+            <div class="statistics-item approved"><span class="statistics-icon">✅</span><span class="statistics-number">${number(statistics.approved)}</span><span class="statistics-label">${labels.approved}</span></div>
+          </div>
+          ${approvalRate === null ? '' : `<div style="margin-top:0.65rem; font-size:0.8rem; font-weight:800; color:var(--success-green); text-align:right;">${labels.rate}: ${approvalRate}%</div>`}
+        </section>
+      `;
+    }
+
+    function createSchemeCardHTML(s, matchType, disclaimer, matchReason) {
+      const isSaved = savedSchemeIds.includes(s.id);
+      const isCompared = selectedCompareIds.includes(s.id);
+
+      const card = document.createElement("div");
+      card.className = `scheme-card ${matchType === 'eligible' ? 'fully-eligible' : 'almost-eligible'}`;
+
+      const docCount = s.required_documents.length;
+      let checkedCount = 0;
+      s.required_documents.forEach(d => {
+        if (checkedDocsState[`${s.id}_${d.id}`]) checkedCount++;
+      });
+      const progressPct = docCount > 0 ? Math.round((checkedCount / docCount) * 100) : 0;
+
+      const localized = (value) => typeof value === 'object'
+        ? (value[currentLang] || value.en || value.ta || '')
+        : (value || '');
+      const labels = currentLang === 'en' ? {
+        eligible: '✅ Potentially Eligible',
+        relevant: '⚡ Potentially Relevant / Near Miss',
+        verified: 'Verified',
+        stateScheme: '🏛️ Tamil Nadu State Scheme',
+        centralScheme: '🇮🇳 Central Government Scheme',
+        department: 'Department',
+        whyRelevant: '💡 Why Relevant',
+        process: '📌 Application Process:',
+        documents: '📝 Required Documents Checklist',
+        compare: 'Add to Compare',
+        explain: '🤖 Simple AI Explanation',
+        centre: '📍 Find Centre',
+        source: '🏛️ Official Source',
+        apply: 'Apply Officially 🔗'
+      } : {
+        eligible: '✅ சாத்தியமான தகுதி',
+        relevant: '⚡ சாத்தியமான பொருத்தம் / அருகிலான தகுதி',
+        verified: 'சரிபார்க்கப்பட்டது',
+        stateScheme: '🏛️ தமிழ்நாடு மாநிலத் திட்டம்',
+        centralScheme: '🇮🇳 மத்திய அரசு திட்டம்',
+        department: 'துறை',
+        whyRelevant: '💡 ஏன் பொருத்தமானது',
+        process: '📌 விண்ணப்ப முறை:',
+        documents: '📝 தேவையான ஆவணங்கள் பட்டியல்',
+        compare: 'ஒப்பிட சேர்க்கவும்',
+        explain: '🤖 AI எளிய விளக்கம்',
+        centre: '📍 மையத்தைக் கண்டறி',
+        source: '🏛️ அதிகாரப்பூர்வ மூலம்',
+        apply: 'அதிகாரப்பூர்வமாக விண்ணப்பிக்கவும் 🔗'
+      };
+      const title = localized(s.scheme_name);
+      const shortDesc = localized(s.short_description);
+      const benefitsText = localized(s.benefits);
+      const processText = localized(s.application_process);
+
+      card.innerHTML = `
+        <div class="meta-badges-row">
+          <span style="background:${matchType === 'eligible' ? 'var(--success-green-bg)' : 'var(--near-miss-bg)'}; color:${matchType === 'eligible' ? 'var(--success-green)' : 'var(--near-miss-purple)'}; padding:3px 10px; border-radius:var(--radius-full); font-size:0.82rem; font-weight:800;">
+            ${matchType === 'eligible' ? labels.eligible : labels.relevant}
+          </span>
+          <span class="source-badge">${s.source_type}</span>
+          <span class="verified-tag">${labels.verified}: ${s.last_verified_at}</span>
+          <button style="margin-left:auto; background:none; border:none; font-size:1.4rem; cursor:pointer;" onclick="toggleBookmark('${s.id}')">${isSaved ? '❤️' : '🤍'}</button>
+        </div>
+
+        <h4 style="font-size:1.35rem; font-weight:800; color:var(--primary-tn-blue); margin-bottom:4px;">${title}</h4>
+        <div style="font-size:0.85rem; font-weight:700; color:#64748B; margin-bottom:10px;">
+          ${s.government_level === 'State' ? labels.stateScheme : labels.centralScheme} • ${labels.department}: ${s.department} • Code: ${s.scheme_code}
+        </div>
+
+        <p style="font-size:0.98rem; margin-bottom:0.85rem; color:var(--text-main);">${shortDesc}</p>
+
+        ${matchReason ? `
+          <div style="background:#F0F9FF; border:1px solid #BAE6FD; color:#0369A1; padding:6px 12px; border-radius:var(--radius-sm); font-size:0.85rem; font-weight:700; margin-bottom:0.85rem;">
+            ${labels.whyRelevant}: ${matchReason[currentLang] || matchReason.en}
+          </div>
+        ` : ''}
+
+        <!-- Official Disclaimer -->
+        <div class="disclaimer-box">
+          <span>⚠️</span> <span>${disclaimer}</span>
+        </div>
+
+        <div class="benefit-banner">
+          <span>🎁</span> <span>${benefitsText}</span>
+        </div>
+
+        ${renderStatisticsMarkup(s)}
+
+        <!-- Application Process Steps -->
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; padding:0.85rem 1rem; border-radius:var(--radius-md); margin-bottom:1rem; font-size:0.88rem;">
+          <div style="font-weight:800; color:var(--primary-tn-blue); margin-bottom:4px;">${labels.process}</div>
+          <div style="white-space:pre-line; color:#334155;">${processText}</div>
+        </div>
+
+        <!-- Documents Checklist -->
+        <div class="doc-section">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:6px;">
+            <span>${labels.documents}</span>
+            <span style="color:var(--success-green); font-weight:800;">${checkedCount}/${docCount} (${progressPct}%)</span>
+          </div>
+          <div class="doc-list">
+            ${s.required_documents.map(d => `
+              <label class="doc-item">
+                <input type="checkbox" ${checkedDocsState[`${s.id}_${d.id}`] ? 'checked' : ''} onchange="toggleDoc('${s.id}', '${d.id}', this.checked)">
+                <span>${d.icon}</span> <span>${d.name[currentLang] || d.name.en}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Action Buttons Footer -->
+        <div class="card-footer">
+          <label style="font-size:0.88rem; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <input type="checkbox" ${isCompared ? 'checked' : ''} onchange="toggleCompare('${s.id}', this.checked)">
+            <span>${labels.compare}</span>
+          </label>
+
+          <div class="action-group">
+            <button class="btn-action" onclick="openSchemeDetails('${s.id}')">📊 ${currentLang === 'en' ? 'View Details' : 'விவரங்களைப் பார்க்க'}</button>
+            <button class="btn-action" onclick="openFullEligibility('${s.id}')">🧠 ${currentLang === 'en' ? 'Check Full Eligibility' : 'முழு தகுதிச் சரிபார்ப்பு'}</button>
+            <button class="btn-action" onclick="explainSchemeAI('${s.id}')">${labels.explain}</button>
+            <button class="btn-action" onclick="openCentresModal('${selectedDistrict}')">${labels.centre}</button>
+            <a href="${s.official_source_url}" target="_blank" rel="noopener noreferrer" class="btn-action" style="background:#EFF6FF; color:#1D4ED8; border-color:#BFDBFE;">${labels.source}</a>
+            <a href="${s.application_url}" target="_blank" rel="noopener noreferrer" class="btn-apply-primary">${labels.apply}</a>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    async function openSchemeDetails(schemeId) {
+      let scheme = masterSchemesList.find(item => item.id === schemeId);
+      if (!scheme) {
+        try {
+          const response = await fetch(`/api/schemes/${encodeURIComponent(schemeId)}`);
+          const json = await response.json();
+          scheme = json.success ? json.data : null;
+        } catch (error) {
+          console.error('Error loading scheme details:', error);
+        }
+      }
+      if (!scheme) return;
+
+      const title = typeof scheme.scheme_name === 'object'
+        ? (scheme.scheme_name[currentLang] || scheme.scheme_name.en || scheme.scheme_name.ta)
+        : scheme.scheme_name;
+      document.getElementById('schemeDetailsTitle').textContent = `${currentLang === 'en' ? 'Scheme Insights' : 'திட்ட நுண்ணறிவுகள்'}: ${title}`;
+      document.getElementById('schemeDetailsBody').innerHTML = renderStatisticsMarkup(scheme, true);
+      document.getElementById('schemeDetailsModal').classList.remove('hidden');
+    }
+
+    function closeSchemeDetails() {
+      document.getElementById('schemeDetailsModal').classList.add('hidden');
+    }
+
+    function toggleDoc(sId, dId, val) {
+      const key = `${sId}_${dId}`;
+      if (val) checkedDocsState[key] = true;
+      else delete checkedDocsState[key];
+      localStorage.setItem('schemefinder_docs', JSON.stringify(checkedDocsState));
+      fetchSchemesFromAPI();
+    }
+
+    function toggleBookmark(sId) {
+      if (savedSchemeIds.includes(sId)) savedSchemeIds = savedSchemeIds.filter(id => id !== sId);
+      else savedSchemeIds.push(sId);
+      localStorage.setItem('schemefinder_saved', JSON.stringify(savedSchemeIds));
+      document.getElementById("savedCount").textContent = savedSchemeIds.length;
+      fetchSchemesFromAPI();
+    }
+
+    function selectCategory(cat, el) {
+      selectedCategory = cat;
+      document.querySelectorAll(".cat-pill").forEach(p => p.classList.remove("active"));
+      el.classList.add("active");
+      fetchSchemesFromAPI();
+    }
+
+    function setSearchTerm(term) {
+      document.getElementById("searchInput").value = term;
+      fetchSchemesFromAPI();
+    }
+
+    function handleSearchInput() {
+      fetchSchemesFromAPI();
+    }
+
+    function updateLanguageUI() {
+      const english = currentLang === 'en';
+      const text = {
+        appSubtitle: english ? 'myScheme.gov.in & Tamil Nadu Government Schemes AI Platform' : 'myScheme.gov.in & தமிழ்நாடு அரசு திட்டங்களின் AI தளம்',
+        navCentresBtnText: english ? 'e-Service Centres' : 'இ-சேவை மையங்கள்',
+        navAlertsBtnText: english ? 'Alerts' : 'அறிவிப்புகள்',
+        savedBtnText: english ? 'Saved' : 'சேமித்தவை',
+        adminBtnText: english ? 'Data Management (Admin)' : 'தரவு நிர்வாகம் (Admin)',
+        heroTag: english ? '🏛️ Official myScheme.gov.in & Tamil Nadu Government live database' : '🏛️ அதிகாரப்பூர்வ myScheme.gov.in & தமிழ்நாடு அரசு நேரடித் தரவுத்தளம்',
+        heroTitle: english ? 'AI citizen guide to find government schemes easily' : 'அரசுத் திட்டங்களை எளிதாகக் கண்டறியும் AI குடிமக்கள் வழிகாட்டி',
+        heroDesc: english ? 'AI automatically reviews thousands of official Central and State Government schemes against your profile and helps you find eligible schemes.' : 'மத்திய மற்றும் மாநில அரசின் ஆயிரக்கணக்கான அதிகாரப்பூர்வ திட்டங்களை உங்களின் சுயவிவரத்திற்கு ஏற்ப AI தானாகவே ஆய்வு செய்து தகுதியான திட்டங்களைக் கண்டறிய உதவுகிறது.',
+        persona1: english ? 'College Student (Pudhumai Penn)' : 'கல்லூரி மாணவி (Pudhumai Penn)',
+        persona2: english ? 'Farmer (PM Kisan)' : 'விவசாயி (PM Kisan)',
+        persona3: english ? 'Homemaker (Magalir Urimai)' : 'குடும்பத் தலைவி (Magalir Urimai)',
+        persona4: english ? 'Person with Disability (Disability Pension)' : 'மாற்றுத்திறனாளி (Disability Pension)',
+        stepIndicator: english ? '📍 Step 1 / 2: Basic Details' : '📍 படி 1 / 2: அடிப்படை விவரங்கள்',
+        formTitle: english ? '📋 Profile Details' : '📋 சுயவிவரத் தகவல்கள்',
+        lblAge: english ? 'Age:' : 'வயது (Age):',
+        lblState: english ? 'State:' : 'மாநிலம் (State):',
+        lblDistrict: english ? 'District (Tamil Nadu):' : 'மாவட்டம் (TN District):',
+        lblOccupation: english ? 'Occupation / Qualification:' : 'தொழில் / தகுதி (Occupation):',
+        lblGender: english ? 'Gender:' : 'பாலினம் (Gender):',
+        lblIncome: english ? 'Annual Family Income:' : 'ஆண்டு குடும்ப வருமானம் (Annual Income):',
+        lblEducation: english ? 'Education Level:' : 'கல்வித் தகுதி (Education Level):',
+        lblCaste: english ? 'Category:' : 'சமுதாயப் பிரிவு (Category):',
+        lblDisability: english ? 'Disability Status:' : 'மாற்றுத்திறனாளி தகுதி (Disability Status):',
+        lblMarital: english ? 'Marital Status:' : 'திருமண நிலை (Marital Status):',
+        lblLandOwner: english ? 'Land Ownership:' : 'நில உரிமை (Land Ownership):',
+        lblOwnPuccaHouse: english ? 'Own a Pucca House?:' : 'சொந்தமாக உறுதியான வீடு உள்ளதா? (Own a Pucca House?):',
+        lblSchoolType: english ? 'Studied in a Tamil Nadu government school from grades 6 to 12?:' : 'தமிழ்நாடு அரசுப் பள்ளியில் 6-12ஆம் வகுப்பு வரை படித்தீர்களா? (TN Govt School, grades 6-12?):',
+        submitBtnText: english ? 'Find Eligible Schemes' : 'தகுதியான திட்டங்களை ஆய்வு செய்'
+      };
+
+      Object.entries(text).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      });
+
+      const optionLabels = {
+        stateSelect: english ? ['Tamil Nadu', 'All India'] : ['Tamil Nadu (தமிழ்நாடு)', 'All India (அனைத்து மாநிலங்கள்)'],
+        occupationSelect: english ? ['Student / College Student', 'Farmer / Agricultural Worker', 'Homemaker', 'Street Vendor', 'Unemployed Youth', 'Salaried Worker', 'Retired / Senior Citizen', 'Artisan / Weaver'] : ['மாணவர் / கல்லூரி மாணவி (Student)', 'விவசாயி / விவசாயத் தொழிலாளி (Farmer)', 'குடும்பத் தலைவி / இல்லத்தரசி (Homemaker)', 'தெருவோர வியாபாரி (Street Vendor)', 'வேலையற்ற இளைஞர் (Unemployed Youth)', 'தனியார் / அரசு ஊழியர் (Salaried Worker)', 'ஓய்வுபெற்றவர் / முதியோர் (Retired / Senior)', 'கைவினைஞர் / நெசவாளர் (Artisan / Weaver)'],
+        genderSelect: english ? ['Select', 'Female', 'Male', 'Transgender'] : ['தேர்வு செய்க (Select)', 'பெண் (Female)', 'ஆண் (Male)', 'திருநங்கை (Transgender)'],
+        educationSelect: english ? ['Select', 'Up to 8th Standard', '10th Standard', '12th Standard', 'Diploma', 'Undergraduate / College', 'Postgraduate'] : ['தேர்வு செய்க (Select)', '8-ஆம் வகுப்பு வரை', '10-ஆம் வகுப்பு (10th Pass)', '12-ஆம் வகுப்பு (12th Pass)', 'டிப்ளமோ (Diploma)', 'பட்டப்படிப்பு (Under Graduate / College)', 'முதுகலை (Post Graduate)'],
+        casteSelect: english ? ['Select', 'SC / ST', 'MBC / DNC', 'BC', 'BC Muslim', 'General'] : ['தேர்வு செய்க (Select)', 'SC / ST (ஆதிதிராவிடர் / பழங்குடியினர்)', 'MBC / DNC (மிகவும் பிற்படுத்தப்பட்டோர்)', 'BC (பிற்படுத்தப்பட்டோர்)', 'BC Muslim', 'General / இதர'],
+        disabilitySelect: english ? ['Select', 'No', 'Yes (40% or more)'] : ['தேர்வு செய்க (Select)', 'இல்லை (No)', 'ஆம் (40% அல்லது அதற்கு மேல்)'],
+        maritalSelect: english ? ['Select', 'Single', 'Married', 'Widow / Abandoned'] : ['தேர்வு செய்க (Select)', 'திருமணமாகாதவர் (Single)', 'திருமணமானவர் (Married)', 'கைம்பெண் / கைவிடப்பட்டவர் (Widow)'],
+        landOwnerSelect: english ? ['Select', 'Yes', 'No'] : ['தேர்வு செய்க (Select)', 'ஆம் (Yes)', 'இல்லை (No)'],
+        ownPuccaHouseSelect: english ? ['Select', 'Yes', 'No'] : ['தேர்வு செய்க (Select)', 'ஆம் (Yes)', 'இல்லை (No)'],
+        schoolTypeSelect: english ? ['Select', 'Yes', 'No'] : ['தேர்வு செய்க (Select)', 'ஆம் (Yes)', 'இல்லை (No)']
+      };
+      Object.entries(optionLabels).forEach(([id, labels]) => {
+        const select = document.getElementById(id);
+        if (select) Array.from(select.options).forEach((option, index) => { option.textContent = labels[index]; });
+      });
+
+      const setText = (selector, value) => {
+        const element = document.querySelector(selector);
+        if (element) element.textContent = value;
+      };
+      const setOptionText = (selector, labels) => {
+        const select = document.querySelector(selector);
+        if (select) Array.from(select.options).forEach((option, index) => { option.textContent = labels[index] || option.textContent; });
+      };
+
+      setText('#personaPrompt', english ? '⚡ Sample profiles (try with one click):' : '⚡ மாதிரி சுயவிவரங்கள் (ஒரே கிளிக்கில் சோதிக்க):');
+      setText('#dynamicFormText', english ? '✨ AI-generated follow-up questions (Dynamic Form)' : '✨ AI தானாகத் உருவாக்கிய கூடுதல் வினாக்கள் (Dynamic Form)');
+      document.getElementById('searchInput').placeholder = english ? 'Search scheme name or keyword (Scholarship, Farmer, Pudhumai Penn, Health...)' : 'திட்டப் பெயர் அல்லது சொல் தேடவும் (Scholarship, Farmer, Pudhumai Penn, Health...)';
+      setOptionText('#govtLevelSelect', english ? ['All Governments', 'Tamil Nadu Government', 'Central Government'] : ['அனைத்து அரசுகள் (All Govt)', 'தமிழ்நாடு அரசு (State TN)', 'மத்திய அரசு (Central Govt)']);
+      setOptionText('#genderSelect', optionLabels.genderSelect);
+      setOptionText('#educationSelect', optionLabels.educationSelect);
+      setOptionText('#casteSelect', optionLabels.casteSelect);
+      setOptionText('#disabilitySelect', optionLabels.disabilitySelect);
+      setOptionText('#maritalSelect', optionLabels.maritalSelect);
+      setOptionText('#landOwnerSelect', optionLabels.landOwnerSelect);
+      setOptionText('#ownPuccaHouseSelect', optionLabels.ownPuccaHouseSelect);
+      setOptionText('#schoolTypeSelect', optionLabels.schoolTypeSelect);
+      document.getElementById('incomeSelect').placeholder = english ? 'Enter annual family income' : 'ஆண்டு குடும்ப வருமானத்தை உள்ளிடவும்';
+      setText('.preset-query-chips > span', english ? 'Quick search:' : 'உடனடித் தேடல்:');
+      setText('#categoryPills .cat-pill:nth-child(1)', english ? 'All' : 'அனைத்தும் (All)');
+      setText('#categoryPills .cat-pill:nth-child(2)', english ? 'Education' : 'கல்வி (Education)');
+      setText('#categoryPills .cat-pill:nth-child(3)', english ? 'Agriculture' : 'விவசாயம் (Agriculture)');
+      setText('#categoryPills .cat-pill:nth-child(4)', english ? 'Women' : 'மகளிர் நலன் (Women)');
+      setText('#categoryPills .cat-pill:nth-child(5)', english ? 'Health' : 'மருத்துவம் (Health)');
+      setText('#categoryPills .cat-pill:nth-child(6)', english ? 'Disability' : 'மாற்றுத்திறனாளி (Disability)');
+      setText('#categoryPills .cat-pill:nth-child(7)', english ? 'Business' : 'வணிகம் / கடன் (Business)');
+      setText('#categoryPills .cat-pill:nth-child(8)', english ? 'Senior Citizens' : 'முதியோர் (Senior)');
+      setText('#categoryPills .cat-pill:nth-child(9)', english ? 'Skill Development' : 'திறன் மேம்பாடு (Skill)');
+      setText('#compareBarText', english ? '2 schemes selected' : '2 திட்டங்கள் தேர்ந்தெடுக்கப்பட்டுள்ளன');
+      setText('#compareBar button:first-of-type', english ? 'Compare ⚖️' : 'ஒப்பிட்டுப் பார் ⚖️');
+      setText('#centresModal .modal-header h3', english ? '📍 Nearby e-Service Centres (CSC Centres)' : '📍 அருகில் உள்ள இ-சேவை மையங்கள் (CSC Centres)');
+      setText('#alertsModal .modal-header h3', english ? '🔔 My Alerts & Reminders' : '🔔 என் அறிவிப்புகள் & நினைவூட்டல்கள்');
+      setText('#compareModal .modal-header h3', english ? '⚖️ Scheme Comparison' : '⚖️ திட்டங்களின் ஒப்பீடு (Scheme Comparison)');
+      setText('#savedModal .modal-header h3', english ? '❤️ My Saved Schemes' : '❤️ என் சேமித்த திட்டங்கள்');
+      setText('#explainModal .modal-header h3', english ? '🤖 Simple AI Explanation' : '🤖 AI எளிய தமிழ் விளக்கம் (AI Terminology Assistant)');
+      setText('#adminModal .modal-header h3', english ? '⚙️ Government Scheme Data Management (Admin Dashboard)' : '⚙️ அரசுத் திட்ட தரவு நிர்வாக மையம் (Admin Dashboard)');
+      document.documentElement.lang = currentLang;
+    }
+
+    function switchLanguage(lang) {
+      if (lang !== 'ta' && lang !== 'en') return;
+      currentLang = lang;
+      document.getElementById("langTaBtn").classList.toggle("active", lang === 'ta');
+      document.getElementById("langEnBtn").classList.toggle("active", lang === 'en');
+      updateLanguageUI();
+      populateDistricts();
+      fetchSchemesFromAPI();
+    }
+
+    function applyPersona(type) {
+      if (type === 'student') {
+        document.getElementById("ageInput").value = 19;
+        document.getElementById("occupationSelect").value = "student";
+        document.getElementById("genderSelect").value = "female";
+      } else if (type === 'farmer') {
+        document.getElementById("ageInput").value = 63;
+        document.getElementById("occupationSelect").value = "farmer";
+        document.getElementById("genderSelect").value = "male";
+      } else if (type === 'homemaker') {
+        document.getElementById("ageInput").value = 34;
+        document.getElementById("occupationSelect").value = "homemaker";
+        document.getElementById("genderSelect").value = "female";
+      } else if (type === 'disabled') {
+        document.getElementById("ageInput").value = 24;
+        document.getElementById("occupationSelect").value = "unemployed";
+        document.getElementById("disabilitySelect").value = "yes";
+      }
+      triggerDynamicFieldAnalysis();
+      document.getElementById("progressiveForm").dispatchEvent(new Event('submit'));
+    }
+
+    // Modal Helpers
+    async function openCentresModal(dist) {
+      const targetDist = dist || document.getElementById("districtSelect").value || selectedDistrict || 'chennai';
+      selectedDistrict = targetDist;
+      document.getElementById("districtSelect").value = targetDist;
+      document.getElementById("modalDistrictSelect").value = targetDist;
+      await loadCentres(targetDist);
+      document.getElementById("centresModal").classList.remove("hidden");
+    }
+
+    function closeCentresModal() { document.getElementById("centresModal").classList.add("hidden"); }
+    function openAlertsModal() { document.getElementById("alertsModal").classList.remove("hidden"); }
+    function closeAlertsModal() { document.getElementById("alertsModal").classList.add("hidden"); }
+    function toggleSavedModal() { renderSavedModal(); document.getElementById("savedModal").classList.remove("hidden"); }
+    function closeSavedModal() { document.getElementById("savedModal").classList.add("hidden"); }
+    function closeExplainModal() { document.getElementById("explainModal").classList.add("hidden"); }
+    function closeFullEligibility() {
+      const fullModal = document.getElementById("fullEligibilityModal");
+      const legacyModal = document.getElementById("eligibilityModal");
+      if (fullModal) fullModal.classList.add("hidden");
+      if (legacyModal) legacyModal.classList.add("hidden");
+    }
+    function closeEligibilityModal() { closeFullEligibility(); }
+    function closeAdminModal() { document.getElementById("adminModal").classList.add("hidden"); }
+
+    function normalizeEligibilityValue(value) {
+      if (value === undefined || value === null) return '';
+      return String(value).trim().toLowerCase();
+    }
+
+    function getProfileSnapshot() {
+      return {
+        age: document.getElementById("ageInput")?.value || '',
+        state: document.getElementById("stateSelect")?.value || '',
+        district: document.getElementById("districtSelect")?.value || '',
+        occupation: document.getElementById("occupationSelect")?.value || '',
+        gender: document.getElementById("genderSelect")?.value || '',
+        income: document.getElementById("incomeSelect")?.value || '',
+        education: document.getElementById("educationSelect")?.value || '',
+        caste: document.getElementById("casteSelect")?.value || '',
+        disability: document.getElementById("disabilitySelect")?.value || '',
+        marital: document.getElementById("maritalSelect")?.value || '',
+        landOwner: document.getElementById("landOwnerSelect")?.value || '',
+        ownPuccaHouse: document.getElementById("ownPuccaHouseSelect")?.value || '',
+        schoolType: document.getElementById("schoolTypeSelect")?.value || ''
+      };
+    }
+
+    function getEligibilityStatusText(status) {
+      const english = currentLang === 'en';
+      const map = {
+        met: english ? 'Met' : 'பூர்த்தி',
+        notMet: english ? 'Not Met' : 'பூர்த்தி இல்லை',
+        missing: english ? 'More Information Required' : 'கூடுதல் தகவல் தேவை'
+      };
+      return map[status] || map.missing;
+    }
+
+    function evaluateEligibilityCriterion(criterion, profile) {
+      const fieldMap = {
+        age: 'age',
+        income: 'income',
+        state: 'state',
+        gender: 'gender',
+        occupation: 'occupation',
+        education: 'education',
+        caste: 'caste',
+        category: 'caste',
+        disability: 'disability',
+        marital: 'marital',
+        landOwner: 'landOwner',
+        ownPuccaHouse: 'ownPuccaHouse',
+        schoolType: 'schoolType'
+      };
+      const fieldKey = fieldMap[criterion.id] || criterion.id;
+      const fieldValue = profile[fieldKey];
+      const value = normalizeEligibilityValue(fieldValue);
+      const labels = {
+        age: currentLang === 'en' ? 'Age' : 'வயது',
+        income: currentLang === 'en' ? 'Annual Family Income' : 'ஆண்டு குடும்ப வருமானம்',
+        state: currentLang === 'en' ? 'State / Domicile' : 'மாநிலம் / வசிப்பிடம்',
+        gender: currentLang === 'en' ? 'Gender' : 'பாலினம்',
+        occupation: currentLang === 'en' ? 'Occupation' : 'தொழில்',
+        education: currentLang === 'en' ? 'Education' : 'கல்வி',
+        caste: currentLang === 'en' ? 'Category' : 'சமுதாயப் பிரிவு',
+        disability: currentLang === 'en' ? 'Disability Status' : 'மாற்றுத்திறன் நிலை',
+        marital: currentLang === 'en' ? 'Marital Status' : 'திருமண நிலை',
+        landOwner: currentLang === 'en' ? 'Land Ownership' : 'நில உரிமை',
+        ownPuccaHouse: currentLang === 'en' ? 'Pucca House Ownership' : 'உறுதியான வீடு உரிமை',
+        schoolType: currentLang === 'en' ? 'Government School Requirement' : 'அரசுப் பள்ளி தகுதி'
+      };
+
+      const criterionLabel = criterion.label || labels[fieldKey] || (currentLang === 'en' ? 'Eligibility Condition' : 'தகுதிச்条件');
+
+      if (!value) {
+        return {
+          status: 'missing',
+          label: criterionLabel,
+          requirement: criterion.condition || (currentLang === 'en' ? 'This information is required for the scheme.' : 'இந்தத் தகவல் திட்டத்திற்கு அவசியம்.'),
+          userValue: currentLang === 'en' ? 'Not provided' : 'வழங்கப்படவில்லை',
+          explanation: currentLang === 'en'
+            ? 'We do not have this information yet. Please add it to complete the check.'
+            : 'இந்தத் தகவல் இன்னும் இல்லை. சரிபார்ப்பை முடிக்க தயவுசெய்து அதை சேர்க்கவும்.'
+        };
+      }
+
+      if (criterion.type === 'number' || criterion.rule) {
+        const numValue = Number(value);
+        const rule = criterion.rule || {};
+        if ((rule.min !== undefined && !Number.isNaN(numValue) && numValue < Number(rule.min)) ||
+            (rule.max !== undefined && !Number.isNaN(numValue) && numValue > Number(rule.max))) {
+          return {
+            status: 'notMet',
+            label: criterionLabel,
+            requirement: criterion.condition,
+            userValue: fieldValue,
+            explanation: currentLang === 'en'
+              ? 'The value in your profile does not satisfy the verified requirement for this scheme.'
+              : 'உங்கள் சுயவிவரத்தில் உள்ள மதிப்பு இந்தத் திட்டத்தின் சரிபார்க்கப்பட்ட தேவையைப் பூர்த்தி செய்யவில்லை.'
+          };
+        }
+        return {
+          status: 'met',
+          label: criterionLabel,
+          requirement: criterion.condition,
+          userValue: fieldValue,
+          explanation: currentLang === 'en'
+            ? 'The value in your profile matches the verified requirement.'
+            : 'உங்கள் சுயவிவரத்திலுள்ள மதிப்பு சரிபார்க்கப்பட்ட தேவைக்கு பொருந்துகிறது.'
+        };
+      }
+
+      const allowed = Array.isArray(criterion.rule?.allowedValues) ? criterion.rule.allowedValues : [];
+      const normalizedAllowed = allowed.map(item => normalizeEligibilityValue(item));
+      if (allowed.length > 0 && !normalizedAllowed.includes(value)) {
+        return {
+          status: 'notMet',
+          label: criterionLabel,
+          requirement: criterion.condition,
+          userValue: fieldValue,
+          explanation: currentLang === 'en'
+            ? 'The value in your profile does not match the scheme requirement.'
+            : 'உங்கள் சுயவிவரத்தில் உள்ள மதிப்பு திட்டத் தேவைக்கு பொருந்தவில்லை.'
+        };
+      }
+
+      return {
+        status: 'met',
+        label: criterionLabel,
+        requirement: criterion.condition,
+        userValue: fieldValue,
+        explanation: currentLang === 'en'
+          ? 'This requirement is satisfied by the information already available in your profile.'
+          : 'இந்தத் தேவை உங்கள் சுயவிவரத்தில் ஏற்கனவே உள்ள தகவலால் பூர்த்தி செய்யப்படுகிறது.'
+      };
+    }
+
+    function renderFullEligibilityResult(scheme) {
+      const bodyTarget = document.getElementById('fullEligibilityBody') || document.getElementById('eligibilityModalBody');
+      const titleTarget = document.getElementById('fullEligibilityTitle') || document.getElementById('eligibilityModalTitle');
+      const container = bodyTarget;
+      if (!scheme) {
+        container.innerHTML = `<div style="padding:1rem; background:#FFF7ED; border:1px solid #FCD34D; border-radius:12px; color:#7C2D12;">${currentLang === 'en' ? 'Scheme eligibility information could not be loaded.' : 'திட்டத் தகுதி தகவலை ஏற்ற முடியவில்லை.'}</div>`;
+        return;
+      }
+
+      const feeData = scheme.full_eligibility || {};
+      const criteria = Array.isArray(feeData.criteria) ? feeData.criteria : [];
+      const title = typeof scheme.scheme_name === 'object'
+        ? (scheme.scheme_name[currentLang] || scheme.scheme_name.en || scheme.scheme_name.ta)
+        : scheme.scheme_name;
+      const sourceTitle = feeData.source && feeData.source.title ? feeData.source.title : (currentLang === 'en' ? 'Official scheme page' : 'அதிகாரப்பூர்வ திட்டப் பக்கம்');
+      const sourceUrl = feeData.source && feeData.source.url ? feeData.source.url : (scheme.official_source_url || '');
+
+      if (titleTarget) titleTarget.textContent = `${currentLang === 'en' ? 'Full Eligibility Check' : 'முழு தகுதிச் சரிபார்ப்பு'}: ${title}`;
+
+      if (!feeData.eligibilityVerified || criteria.length === 0) {
+        container.innerHTML = `
+          <div class="eligibility-status unverified">
+            <strong>${currentLang === 'en' ? '⚠️ Full eligibility details not verified' : '⚠️ முழு தகுதி விவரங்கள் சரிபார்க்கப்படவில்லை'}</strong>
+            <p style="margin-top:0.5rem; margin-bottom:0; color:#78350F;">${currentLang === 'en' ? 'Full eligibility details are not currently verified for this scheme. Please check the official scheme page before making any application decision.' : 'இந்த திட்டத்திற்கு முழு தகுதி விவரங்கள் தற்போது சரிபார்க்கப்படவில்லை. எந்தவொரு விண்ணப்ப முடிவும் எடுப்பதற்கு முன் அதிகாரப்பூர்வ திட்டப் பக்கத்தைப் பார்க்கவும்.'}</p>
+          </div>
+          <div style="padding:1rem; background:#F8FAFC; border:1px solid var(--border-light); border-radius:12px; margin-top:0.5rem;">
+            <div style="font-weight:800; color:var(--primary-tn-blue); margin-bottom:0.4rem;">${currentLang === 'en' ? 'Official Source' : 'அதிகாரப்பூர்வ மூலம்'}</div>
+            <a href="${sourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; text-decoration:none; font-weight:700;">${sourceTitle}</a>
+          </div>
+        `;
+        return;
+      }
+
+      const profile = getProfileSnapshot();
+      const results = criteria.map(criterion => evaluateEligibilityCriterion(criterion, profile));
+      const missingCount = results.filter(r => r.status === 'missing').length;
+      const notMetCount = results.filter(r => r.status === 'notMet').length;
+      const metCount = results.filter(r => r.status === 'met').length;
+      let overallStatus = 'potentiallyEligible';
+      if (notMetCount > 0) overallStatus = 'notSatisfied';
+      else if (missingCount > 0) overallStatus = 'moreInfo';
+
+      const overallText = {
+        potentiallyEligible: currentLang === 'en' ? 'Potentially Eligible' : 'சாத்தியமான தகுதி',
+        moreInfo: currentLang === 'en' ? 'More Information Required' : 'கூடுதல் தகவல் தேவை',
+        notSatisfied: currentLang === 'en' ? 'Criteria Not Satisfied' : 'தகுதிச் தேவைகள் பூர்த்தியடையவில்லை'
+      };
+
+      const overallHtml = {
+        potentiallyEligible: `<div style="padding:1rem; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; margin-bottom:1rem; color:#166534; font-weight:800;">🟢 ${overallText.potentiallyEligible}</div>`,
+        moreInfo: `<div style="padding:1rem; background:#FFFBEB; border:1px solid #FCD34D; border-radius:12px; margin-bottom:1rem; color:#92400E; font-weight:800;">🟡 ${overallText.moreInfo}</div>`,
+        notSatisfied: `<div style="padding:1rem; background:#FEF2F2; border:1px solid #FECACA; border-radius:12px; margin-bottom:1rem; color:#991B1B; font-weight:800;">🔴 ${overallText.notSatisfied}</div>`
+      };
+
+      const criteriaMarkup = results.map(result => {
+        const selectLabel = currentLang === 'en' ? 'Select' : 'தேர்வு செய்க';
+        const defaultOptions = {
+          gender: `<option value="">${selectLabel}</option><option value="female">${currentLang === 'en' ? 'Female' : 'பெண்'}</option><option value="male">${currentLang === 'en' ? 'Male' : 'ஆண்'}</option><option value="transgender">${currentLang === 'en' ? 'Transgender' : 'திருநங்கை'}</option>`,
+          caste: `<option value="">${selectLabel}</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="bc">BC</option><option value="general">General</option>`,
+          state: `<option value="">${selectLabel}</option><option value="Tamil Nadu">Tamil Nadu</option><option value="All India">All India</option>`,
+          income: `<option value="">${selectLabel}</option><option value="50000">₹50,000</option><option value="100000">₹1,00,000</option><option value="200000">₹2,00,000</option><option value="250000">₹2,50,000</option><option value="500000">₹5,00,000</option>`,
+          land: `<option value="">${selectLabel}</option><option value="yes">Yes</option><option value="no">No</option>`,
+          house: `<option value="">${selectLabel}</option><option value="yes">Yes</option><option value="no">No</option>`
+        };
+
+        let optionHtml = '';
+        const lower = result.label.toLowerCase();
+        if (lower.includes('gender')) optionHtml = defaultOptions.gender;
+        else if (lower.includes('category') || lower.includes('caste')) optionHtml = defaultOptions.caste;
+        else if (lower.includes('state')) optionHtml = defaultOptions.state;
+        else if (lower.includes('income')) optionHtml = defaultOptions.income;
+        else if (lower.includes('land')) optionHtml = defaultOptions.land;
+        else if (lower.includes('house')) optionHtml = defaultOptions.house;
+
+        return `
+          <div class="eligibility-criterion ${result.status === 'met' ? 'met' : result.status === 'notMet' ? 'not-met' : 'missing'}">
+            <div class="eligibility-criterion-header">
+              <h4>${result.label}</h4>
+              <span class="result-badge ${result.status === 'met' ? 'met' : result.status === 'notMet' ? 'not-met' : 'missing'}">${getEligibilityStatusText(result.status)}</span>
+            </div>
+            <div style="font-size:0.9rem; color:#475569; margin-bottom:0.3rem;"><strong>${currentLang === 'en' ? 'Requirement:' : 'தேவை:'}</strong> ${result.requirement || '-'}</div>
+            <div style="font-size:0.9rem; color:#475569; margin-bottom:0.3rem;"><strong>${currentLang === 'en' ? 'Your information:' : 'உங்கள் தகவல்:'}</strong> ${result.userValue || (currentLang === 'en' ? 'Not provided' : 'வழங்கப்படவில்லை')}</div>
+            <div style="font-size:0.88rem; color:#334155;">${result.explanation}</div>
+            ${result.status === 'missing' ? `<div class="eligibility-input-row">
+              <select id="missingEligibilityField_${result.label.replace(/\s+/g, '_')}">
+                ${optionHtml}
+              </select>
+              <button class="mini-btn" onclick="applyEligibilityInput('${result.label}', this.previousElementSibling.value)">${currentLang === 'en' ? 'Use this value' : 'இந்த மதிப்பைப் பயன்படுத்து'}</button>
+            </div>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      const summary = `${currentLang === 'en' ? 'Checked' : 'சரிபார்க்கப்பட்டது'}: ${metCount + notMetCount + missingCount}/${criteria.length}`;
+      const lastVerifiedText = scheme.last_verified_at ? scheme.last_verified_at : (currentLang === 'en' ? 'Not available' : 'கிடைக்கவில்லை');
+      container.innerHTML = `
+        ${overallHtml[overallStatus]}
+        <div class="eligibility-status verified">
+          <strong>${currentLang === 'en' ? 'Eligibility information source' : 'தகுதி தகவல் மூலம்'}</strong>
+          <div style="margin-top:0.5rem; font-size:0.9rem; color:#475569;">${currentLang === 'en' ? 'Source' : 'மூலம்'}: <a href="${sourceUrl || '#'}" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; font-weight:700;">${sourceTitle}</a></div>
+          <div style="margin-top:0.3rem; font-size:0.85rem; color:#475569;">${currentLang === 'en' ? 'Last verified' : 'கடைசியாக சரிபார்க்கப்பட்டது'}: ${lastVerifiedText}</div>
+        </div>
+        <div style="margin-bottom:1rem; font-size:0.85rem; color:#475569; font-weight:700;">${summary}</div>
+        ${criteriaMarkup}
+      `;
+      const modalToShow = document.getElementById('fullEligibilityModal') || document.getElementById('eligibilityModal');
+      if (modalToShow) modalToShow.classList.remove('hidden');
+    }
+
+    function applyEligibilityInput(label, value) {
+      if (!value) return;
+      const mapping = {
+        age: 'ageInput',
+        income: 'incomeSelect',
+        state: 'stateSelect',
+        gender: 'genderSelect',
+        occupation: 'occupationSelect',
+        education: 'educationSelect',
+        caste: 'casteSelect',
+        category: 'casteSelect',
+        disability: 'disabilitySelect',
+        marital: 'maritalSelect',
+        landOwner: 'landOwnerSelect',
+        ownPuccaHouse: 'ownPuccaHouseSelect',
+        schoolType: 'schoolTypeSelect'
+      };
+      const fieldId = mapping[label.toLowerCase()] || null;
+      if (fieldId) {
+        const field = document.getElementById(fieldId);
+        if (field) field.value = value;
+      }
+      const bodyTarget = document.getElementById('fullEligibilityBody') || document.getElementById('eligibilityModalBody');
+      const schemeId = bodyTarget && bodyTarget.dataset ? bodyTarget.dataset.schemeId : null;
+      if (schemeId) openFullEligibilityCheck(schemeId);
+    }
+
+    async function openFullEligibility(schemeId) {
+      const modalTarget = document.getElementById('fullEligibilityModal') || document.getElementById('eligibilityModal');
+      if (modalTarget) modalTarget.classList.remove('hidden');
+      return openFullEligibilityCheck(schemeId);
+    }
+
+    async function openFullEligibilityCheck(schemeId) {
+      let scheme = masterSchemesList.find(item => item.id === schemeId);
+      if (!scheme) {
+        try {
+          const response = await fetch(`/api/schemes/${encodeURIComponent(schemeId)}`);
+          const json = await response.json();
+          scheme = json.success ? json.data : null;
+        } catch (error) {
+          console.error('Error loading full eligibility:', error);
+        }
+      }
+
+      const modalTarget = document.getElementById('fullEligibilityModal') || document.getElementById('eligibilityModal');
+      const bodyTarget = document.getElementById('fullEligibilityBody') || document.getElementById('eligibilityModalBody');
+      if (!modalTarget || !bodyTarget) {
+        console.error('Full eligibility modal container not found');
+        return;
+      }
+
+      if (!scheme) {
+        bodyTarget.innerHTML = `<div style="padding:1rem; background:#FEF2F2; border:1px solid #FECACA; border-radius:12px; color:#991B1B;">${currentLang === 'en' ? 'Scheme eligibility information could not be loaded.' : 'திட்டத் தகுதி தகவலை ஏற்ற முடியவில்லை.'}</div>`;
+        modalTarget.classList.remove('hidden');
+        return;
+      }
+
+      bodyTarget.dataset.schemeId = scheme.id;
+      renderFullEligibilityResult(scheme);
+      modalTarget.classList.remove('hidden');
+    }
+
+    async function loadCentres(distId) {
+      const type = document.getElementById("modalCentreTypeSelect").value;
+      const res = await fetch(`/api/centres?district=${encodeURIComponent(distId)}&type=${encodeURIComponent(type)}`);
+      const json = await res.json();
+      const grid = document.getElementById("centresListGrid");
+      grid.innerHTML = "";
+
+      if (json.data.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; padding:2rem; text-align:center;">No centres found for this selection.</div>`;
+        return;
+      }
+
+      json.data.forEach(c => {
+        const name = typeof c.name === 'object' ? c.name[currentLang] : c.name;
+        const card = document.createElement("div");
+        card.style.cssText = "border:1px solid var(--border-light); padding:1rem; border-radius:var(--radius-md); background:white;";
+        card.innerHTML = `
+          <div style="font-weight:800; color:var(--primary-tn-blue); margin-bottom:4px;">${name}</div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">📍 ${c.address} (${c.distance})</div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">📞 ${c.phone}</div>
+          <div style="font-size:0.8rem; color:#64748B; margin-top:4px;">⏰ ${c.hours}</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((c.name.en || c.name) + ' ' + c.address)}" target="_blank" style="display:inline-block; margin-top:8px; background:var(--success-green); color:white; padding:5px 12px; border-radius:var(--radius-full); font-size:0.82rem; font-weight:700; text-decoration:none;">📍 Get Directions</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    async function explainSchemeAI(schemeId) {
+      try {
+        const res = await fetch('/api/schemes/explain', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ schemeId, lang: currentLang })
+        });
+        const json = await res.json();
+        if (json.success) {
+          const data = json.data;
+          const body = document.getElementById("explainModalBody");
+          body.innerHTML = `
+            <h4 style="font-size:1.2rem; font-weight:800; color:var(--primary-tn-blue); margin-bottom:8px;">${data.title}</h4>
+            <div style="background:#F0F9FF; border:1px solid #BAE6FD; padding:1rem; border-radius:var(--radius-md); margin-bottom:1rem; font-size:0.95rem;">
+              <strong>சுருக்கம் / Summary:</strong><br>${data.summary}
+            </div>
+            <div style="background:#FAF5FF; border:1px solid #E9D5FF; padding:1rem; border-radius:var(--radius-md); font-size:0.92rem; white-space:pre-line;">
+              <strong>எளிய தகுதிகள் & வழிமுறைகள் / Simplified Rules:</strong><br>${data.simplifiedRules}
+            </div>
+            <div style="margin-top:1rem; font-size:0.82rem; color:#B45309; background:#FFFBEB; padding:8px; border-radius:var(--radius-sm);">
+              ⚠️ ${data.disclaimer}
+            </div>
+          `;
+          document.getElementById("explainModal").classList.remove("hidden");
+        }
+      } catch (e) {
+        console.error("AI Explain error:", e);
+      }
+    }
+
+    function renderSavedModal() {
+      const container = document.getElementById("savedModalBody");
+      container.innerHTML = "";
+      const saved = masterSchemesList.filter(s => savedSchemeIds.includes(s.id));
+      if (saved.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:2rem;">சேமிக்கப்பட்ட திட்டங்கள் எதுவுமில்லை / No saved schemes yet.</div>`;
+        return;
+      }
+      saved.forEach(s => {
+        const card = createSchemeCardHTML(s, 'eligible', 'Final eligibility is subject to verification by respective government department.');
+        container.appendChild(card);
+      });
+    }
+
+    function toggleCompare(id, val) {
+      if (val) {
+        if (!selectedCompareIds.includes(id)) selectedCompareIds.push(id);
+      } else {
+        selectedCompareIds = selectedCompareIds.filter(i => i !== id);
+      }
+      document.getElementById("compareBar").classList.toggle("hidden", selectedCompareIds.length === 0);
+    }
+
+    function clearCompareSelection() {
+      selectedCompareIds = [];
+      document.getElementById("compareBar").classList.add("hidden");
+      fetchSchemesFromAPI();
+    }
+
+    function openCompareModal() {
+      const container = document.getElementById("compareModalBody");
+      const schemes = masterSchemesList.filter(s => selectedCompareIds.includes(s.id));
+      container.innerHTML = `
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+          <thead>
+            <tr style="background:var(--bg-slate);"><th style="padding:10px; border:1px solid #ddd; text-align:left;">அம்சம் (Feature)</th>${schemes.map(s => `<th style="padding:10px; border:1px solid #ddd; text-align:left;">${s.scheme_name[currentLang] || s.scheme_name}</th>`).join('')}</tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:10px; border:1px solid #ddd; font-weight:700;">Government Level</td>${schemes.map(s => `<td style="padding:10px; border:1px solid #ddd;">${s.government_level} (${s.state})</td>`).join('')}</tr>
+            <tr><td style="padding:10px; border:1px solid #ddd; font-weight:700;">Department</td>${schemes.map(s => `<td style="padding:10px; border:1px solid #ddd;">${s.department}</td>`).join('')}</tr>
+            <tr><td style="padding:10px; border:1px solid #ddd; font-weight:700;">Benefits</td>${schemes.map(s => `<td style="padding:10px; border:1px solid #ddd;">${s.benefits[currentLang] || s.benefits}</td>`).join('')}</tr>
+            <tr><td style="padding:10px; border:1px solid #ddd; font-weight:700;">Verified Date</td>${schemes.map(s => `<td style="padding:10px; border:1px solid #ddd;">${s.last_verified_at}</td>`).join('')}</tr>
+            <tr><td style="padding:10px; border:1px solid #ddd; font-weight:700;">Official Source</td>${schemes.map(s => `<td style="padding:10px; border:1px solid #ddd;"><a href="${s.official_source_url}" target="_blank">View Official Source</a></td>`).join('')}</tr>
+          </tbody>
+        </table>
+      `;
+      document.getElementById("compareModal").classList.remove("hidden");
+    }
+
+    function closeCompareModal() { document.getElementById("compareModal").classList.add("hidden"); }
+
+    // Admin Dashboard Functions
+    async function openAdminModal() {
+      await loadAdminSchemesTable();
+      document.getElementById("adminModal").classList.remove("hidden");
+    }
+
+    async function loadAdminSchemesTable() {
+      const res = await fetch('/api/admin/schemes');
+      const json = await res.json();
+      const container = document.getElementById("adminSchemesTableContainer");
+
+      if (!json.success || json.data.length === 0) {
+        container.innerHTML = `<div>No admin records found.</div>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+          <thead>
+            <tr style="background:var(--primary-tn-blue); color:white;">
+              <th style="padding:8px; text-align:left;">ID</th>
+              <th style="padding:8px; text-align:left;">Scheme Name</th>
+              <th style="padding:8px; text-align:left;">Level</th>
+              <th style="padding:8px; text-align:left;">Status</th>
+              <th style="padding:8px; text-align:left;">Last Verified</th>
+              <th style="padding:8px; text-align:left;">Official Source</th>
+              <th style="padding:8px; text-align:left;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${json.data.map(s => `
+              <tr style="border-bottom:1px solid #CBD5E1;">
+                <td style="padding:8px;"><code>${s.id}</code></td>
+                <td style="padding:8px; font-weight:700;">${typeof s.scheme_name === 'object' ? s.scheme_name.en : s.scheme_name}</td>
+                <td style="padding:8px;">${s.government_level} (${s.state})</td>
+                <td style="padding:8px;">
+                  <span style="background:${s.active_status === 'ACTIVE' ? '#DCFCE7' : '#FEF3C7'}; color:${s.active_status === 'ACTIVE' ? '#166534' : '#92400E'}; padding:2px 8px; border-radius:12px; font-weight:800;">
+                    ${s.active_status}
+                  </span>
+                </td>
+                <td style="padding:8px;">${s.last_verified_at}</td>
+                <td style="padding:8px;"><a href="${s.official_source_url}" target="_blank">Source Link</a></td>
+                <td style="padding:8px;">
+                  <button onclick="verifySingleScheme('${s.id}')" style="background:var(--success-green); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Verify Today</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    async function bulkVerifySchemes() {
+      const today = new Date().toLocaleDateString('en-GB');
+      const res = await fetch('/api/admin/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ schemeId: 'ALL', verifyDate: today, activeStatus: 'ACTIVE' })
+      });
+      const json = await res.json();
+      if (json.success) {
+        alert("All schemes updated to verified date: " + today);
+        await loadAdminSchemesTable();
+        fetchSchemesFromAPI();
+      }
+    }
+
+    async function verifySingleScheme(schemeId) {
+      const today = new Date().toLocaleDateString('en-GB');
+      const res = await fetch('/api/admin/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ schemeId, verifyDate: today, activeStatus: 'ACTIVE' })
+      });
+      const json = await res.json();
+      if (json.success) {
+        await loadAdminSchemesTable();
+        fetchSchemesFromAPI();
+      }
+    }
+
+    async function handleAdminImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const content = e.target.result;
+          const parsed = JSON.parse(content);
+          const res = await fetch('/api/admin/import', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(parsed)
+          });
+          const json = await res.json();
+          if (json.success) {
+            alert(`Imported ${json.importedCount} schemes successfully!`);
+            await loadAdminSchemesTable();
+            fetchSchemesFromAPI();
+          } else {
+            alert("Import failed: " + json.error);
+          }
+        } catch (err) {
+          alert("Invalid JSON file format");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function startVoiceInput() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) { alert("Voice input not supported on this browser."); return; }
+      const recognition = new SpeechRecognition();
+      recognition.lang = currentLang === 'ta' ? 'ta-IN' : 'en-IN';
+      recognition.start();
+      recognition.onresult = (e) => {
+        const text = e.results[0][0].transcript.toLowerCase();
+        if (text.includes("student") || text.includes("மாணவி") || text.includes("மாணவன்")) document.getElementById("occupationSelect").value = "student";
+        if (text.includes("farmer") || text.includes("விவசாயி")) document.getElementById("occupationSelect").value = "farmer";
+        if (text.includes("women") || text.includes("பெண்") || text.includes("இல்லத்தரசி")) document.getElementById("occupationSelect").value = "homemaker";
+        triggerDynamicFieldAnalysis();
+        document.getElementById("progressiveForm").dispatchEvent(new Event('submit'));
+      };
+    }
+  </script>
+</body>
+</html>

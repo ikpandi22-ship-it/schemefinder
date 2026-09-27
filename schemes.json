@@ -1,0 +1,842 @@
+[
+  {
+    "id": "pudhumai_penn",
+    "scheme_name": {
+      "ta": "புதுமைப் பெண் திட்டம் (மூவலூர் இராமாமிர்தம் அம்மையார் உயர்கல்வி உறுதித் திட்டம்)",
+      "en": "Moovalur Ramamirtham Ammaiyar Higher Education Assistance Scheme (Pudhumai Penn)"
+    },
+    "scheme_code": "TN-EDU-2022-01",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Social Welfare & Women Empowerment Department",
+    "department": "Directorate of Social Welfare, Tamil Nadu",
+    "category": "Education",
+    "sub_category": "Higher Education Financial Aid for Girls",
+    "short_description": {
+      "ta": "தமிழ்நாடு அரசுப் பள்ளிகளில் 6 முதல் 12-ஆம் வகுப்பு வரை படித்து உயர்கல்வி பயிலும் மாணவிகளுக்கு மாதந்தோறும் ₹1,000 நிதியுதவி வழங்கும் திட்டம்.",
+      "en": "Financial assistance of ₹1,000 per month for female students who studied in TN Govt schools from 6th to 12th standard and are pursuing higher education."
+    },
+    "detailed_description": {
+      "ta": "இத்திட்டம் அரசுப் பள்ளிகளில் பயின்ற பெண் குழந்தைகள் உயர்கல்வி கற்பதை ஊக்குவிக்கவும், இடைநிற்றலைத் தடுக்கவும் பட்டப்படிப்பு, பட்டயப்படிப்பு அல்லது தொழிற்கல்வி முடியும் வரை மாதந்தோறும் ₹1,000 நேரடியாக அவர்களின் வங்கி கணக்கில் வழங்குகிறது.",
+      "en": "Designed to encourage higher education among girl students from government schools and prevent dropouts, providing ₹1,000 per month directly into Aadhaar-seeded bank accounts until completion of UG Degree, Diploma, or Vocational courses."
+    },
+    "benefits": {
+      "ta": "மாதந்தோறும் ₹1,000 நேரடியாக வங்கிப் கணக்கில் வரவு வைக்கப்படும் (ஆண்டுக்கு ₹12,000).",
+      "en": "₹1,000 per month directly credited to student's Aadhaar-seeded bank account (₹12,000 annually)."
+    },
+    "eligibility_rules": {
+      "gender": ["female"],
+      "minAge": 17,
+      "maxAge": 28,
+      "occupation": ["student"],
+      "educationMin": "degree",
+      "incomeMax": 500000,
+      "schoolType": "TN Govt School (6th to 12th)"
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு (Aadhaar Card)", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "school_tc", "name": { "ta": "6 முதல் 12-ஆம் வகுப்பு அரசுப் பள்ளிச் சான்றிதழ் / EMIS ID", "en": "6th-12th TN Govt School Certificate / EMIS ID" }, "icon": "🎓" },
+      { "id": "college_id", "name": { "ta": "கல்லூரி சேர்க்கை அட்டை / அடையாள அட்டை", "en": "College ID Card / Admission Proof" }, "icon": "🆔" },
+      { "id": "bank_passbook", "name": { "ta": "ஆதார் இணைக்கப்பட்ட வங்கி கணக்கு புத்தகம்", "en": "Aadhaar-linked Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. penkalvi.tn.gov.in போர்ட்டலில் பதிவு செய்யவும்.\n2. EMIS மாணவர் எண் மற்றும் பள்ளி விவரங்களை உள்ளிடவும்.\n3. கல்லூரி சேர்க்கை மற்றும் வங்கி கணக்கு விவரங்களைப் பதிவேற்றவும்.",
+      "en": "1. Register on official portal penkalvi.tn.gov.in.\n2. Enter EMIS student ID and school study details.\n3. Upload college admission proof and bank details."
+    },
+    "application_url": "https://www.penkalvi.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/mrahss",
+    "helpline_number": "1800-425-1600 / 1100",
+    "start_date": "2022-09-05",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "myScheme.gov.in & Official TN Govt Portal",
+    "statistics": { "views": 1420, "applications": 1180, "approved": 1025, "isDemo": true }
+  },
+  {
+    "id": "thamizh_pudhalvan",
+    "scheme_name": {
+      "ta": "தமிழ்ப் புதல்வன் திட்டம் (மாணவர்களுக்கான உயர்கல்வி உதவித்தொகை)",
+      "en": "Thamizh Pudhalvan Scheme (Higher Education Financial Aid for Boys)"
+    },
+    "scheme_code": "TN-EDU-2024-02",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Social Welfare & Youth Welfare Department",
+    "department": "Directorate of Higher Education, Tamil Nadu",
+    "category": "Education",
+    "sub_category": "Higher Education Financial Aid for Male Students",
+    "short_description": {
+      "ta": "அரசுப் பள்ளிகளில் 6 முதல் 12-ஆம் வகுப்பு வரை படித்த மாணவர்களுக்கு உயர்கல்வி பயில மாதந்தோறும் ₹1,000 நிதியுதவி.",
+      "en": "₹1,000 monthly financial assistance for male students who studied in TN Govt schools from 6th to 12th standard and enrolled in higher education."
+    },
+    "detailed_description": {
+      "ta": "அரசுப் பள்ளிகளில் பயின்ற மாணவர்களின் உயர்கல்வி சேர்க்கையை அதிகரிக்கவும், பாடப்புத்தகங்கள், போக்குவரத்து மற்றும் கல்விக் கட்டணச் செலவுகளை மேற்கொள்ளவும் மாதம் ₹1,000 நேரடியாக வழங்கப்படுகிறது.",
+      "en": "Aimed at encouraging male students from government schools to pursue higher education, helping them cover textbook, transport, and academic expenses with a monthly ₹1,000 direct benefit transfer."
+    },
+    "benefits": {
+      "ta": "மாதந்தோறும் ₹1,000 நேரடியாக வங்கிப் கணக்கில் வரவு வைக்கப்படும்.",
+      "en": "₹1,000 per month direct benefit transfer."
+    },
+    "eligibility_rules": {
+      "gender": ["male"],
+      "minAge": 17,
+      "maxAge": 28,
+      "occupation": ["student"],
+      "educationMin": "degree",
+      "incomeMax": 500000,
+      "schoolType": "TN Govt School (6th to 12th)"
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு (Aadhaar Card)", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "school_tc", "name": { "ta": "6-12 அரசுப் பள்ளி படிப்பு சான்றிதழ்", "en": "6th-12th TN Govt School Certificate" }, "icon": "🎓" },
+      { "id": "college_id", "name": { "ta": "கல்லூரி அடையாள அட்டை", "en": "College ID Card" }, "icon": "🆔" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. கல்லூரி நோடல் அலுவலர் மூலம் உயர்கல்வி போர்ட்டலில் விண்ணப்பிக்கவும்.\n2. ஆதார் மற்றும் வங்கி கணக்கு விவரங்களை சரிபார்க்கவும்.",
+      "en": "1. Apply via college nodal officer on TN Higher Education portal.\n2. Verify Aadhaar-seeded bank account."
+    },
+    "application_url": "https://www.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/tps",
+    "helpline_number": "1800-425-1600",
+    "start_date": "2024-08-09",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "myScheme.gov.in & TN Dept of Higher Education",
+    "statistics": { "views": 980, "applications": 850, "approved": 790, "isDemo": true }
+  },
+  {
+    "id": "kmut_women_aid",
+    "scheme_name": {
+      "ta": "கலைஞர் மகளிர் உரிமைத் தொகை திட்டம்",
+      "en": "Kalaignar Magalir Urimai Thogai Scheme (KMUT)"
+    },
+    "scheme_code": "TN-WOM-2023-01",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Special Programme Implementation Department",
+    "department": "Revenue and Disaster Management Department, Tamil Nadu",
+    "category": "Women & Child",
+    "sub_category": "Universal Basic Income for Women Head of Family",
+    "short_description": {
+      "ta": "தமிழ்நாட்டின் தகுதியுள்ள குடும்பத் தலைவிகளுக்கு மாதந்தோறும் ₹1,000 உரிமைத் தொகை வழங்கும் வரலாற்று சிறப்புமிக்க திட்டம்.",
+      "en": "Historic financial independence scheme providing ₹1,000 monthly rights grant to eligible women heads of households in Tamil Nadu."
+    },
+    "detailed_description": {
+      "ta": "பெண்களின் உழைப்பை அங்கீகரிக்கவும், அவர்களின் வாழ்வாதாரத்தை மேம்படுத்தவும் ஆண்டு குடும்ப வருமானம் ₹2.5 லட்சத்திற்குள் உள்ள தகுதியுள்ள குடும்பத் தலைவிகளுக்கு மாதம் ₹1,000 வங்கி கணக்கில் நேரடியாக செலுத்தப்படுகிறது.",
+      "en": "Recognizing women's uncompensated household labor and facilitating financial autonomy, this scheme transfers ₹1,000 monthly to eligible women heads of households with annual family income below ₹2.5 Lakhs."
+    },
+    "benefits": {
+      "ta": "மாதந்தோறும் ₹1,000 நேரடி உதவித்தொகை (ஆண்டுக்கு ₹12,000).",
+      "en": "₹1,000 monthly direct bank transfer (₹12,000 per year)."
+    },
+    "eligibility_rules": {
+      "gender": ["female"],
+      "minAge": 21,
+      "maxAge": 65,
+      "occupation": ["homemaker", "farmer", "vendor", "unemployed", "artisan"],
+      "incomeMax": 250000,
+      "marital": ["married", "widow", "single"]
+    },
+    "required_documents": [
+      { "id": "smart_card", "name": { "ta": "குடும்ப அட்டை (Smart Ration Card)", "en": "Smart Ration Card" }, "icon": "💳" },
+      { "id": "aadhaar", "name": { "ta": "ஆதார் அட்டை", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" },
+      { "id": "eb_bill", "name": { "ta": "மின்சாரக் கட்டண ரசீது (360 யூனிட்டுக்குள்)", "en": "Electricity Bill Receipt" }, "icon": "⚡" }
+    ],
+    "application_process": {
+      "ta": "1. நியாயவிலைக் கடைகளில் விண்ணப்பப் படிவம் மற்றும் டோக்கன் பெறவும்.\n2. சிறப்பு முகாம்களில் (e-Sevai camps) விவரங்களை பதிவு செய்து கைரேகை சரிபார்க்கவும்.",
+      "en": "1. Receive application form and token from fair price shop.\n2. Submit details and complete biometric verification at designated e-Sevai camps."
+    },
+    "application_url": "https://kmut.tn.gov.in/",
+    "official_source_url": "https://kmut.tn.gov.in/",
+    "helpline_number": "044-25619200 / 1100",
+    "start_date": "2023-09-15",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official Tamil Nadu Govt Portal (kmut.tn.gov.in)",
+    "statistics": { "views": 3100, "applications": 2890, "approved": 2750, "isDemo": true }
+  },
+  {
+    "id": "cmchis_health",
+    "scheme_name": {
+      "ta": "முதலமைச்சரின் விரிவான மருத்துவக் காப்பீட்டுத் திட்டம் (CMCHIS)",
+      "en": "Chief Minister's Comprehensive Health Insurance Scheme (CMCHIS)"
+    },
+    "scheme_code": "TN-HEA-2012-01",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Health and Family Welfare Department",
+    "department": "Tamil Nadu Health Systems Project (TNHSP)",
+    "category": "Health",
+    "sub_category": "Cashless Hospitalization Insurance",
+    "short_description": {
+      "ta": "ஆண்டுக்கு ₹5 லட்சம் வரை கட்டணமில்லா மருத்துவச் சிகிச்சை வழங்கும் முதலமைச்சரின் விரிவான மருத்துவக் காப்பீட்டுத் திட்டம்.",
+      "en": "Comprehensive cashless medical coverage of up to ₹5 Lakhs per family per year across empaneled government and private hospitals."
+    },
+    "detailed_description": {
+      "ta": "தமிழ்நாட்டில் ஆண்டு வருமானம் ₹1.2 லட்சத்திற்குக் கீழ் உள்ள குடும்பங்களுக்கு 1,500-க்கும் மேற்பட்ட அறுவை சிகிச்சைகள் மற்றும் சிறப்பு மருத்துவச் சிகிச்சைகளுக்குக் காப்பீடு வழங்குகிறது.",
+      "en": "Provides cashless hospitalization for over 1,500 specialized surgical and medical procedures to families in Tamil Nadu with an annual family income below ₹1.2 Lakh."
+    },
+    "benefits": {
+      "ta": "குடும்பத்திற்கு ஆண்டுக்கு ₹5,00,000 வரை இலவச மருத்துவக் காப்பீடு.",
+      "en": "Up to ₹5,00,000 cashless health insurance coverage per family per year."
+    },
+    "eligibility_rules": {
+      "minAge": 0,
+      "maxAge": 100,
+      "incomeMax": 120000,
+      "residence": "Tamil Nadu"
+    },
+    "required_documents": [
+      { "id": "smart_card", "name": { "ta": "குடும்ப ரேஷன் கார்டு", "en": "Smart Ration Card" }, "icon": "💳" },
+      { "id": "income_cert", "name": { "ta": "வருமானச் சான்றிதழ் (VAO/Tahsildar)", "en": "Income Certificate from Tahsildar" }, "icon": "📄" },
+      { "id": "aadhaar", "name": { "ta": "அனைத்து குடும்ப உறுப்பினர்களின் ஆதார்", "en": "Aadhaar Cards of Family Members" }, "icon": "🪪" }
+    ],
+    "application_process": {
+      "ta": "1. தாலுகா அலுவலகத்தில் இயங்கும் CMCHIS மையத்தில் ரேஷன் கார்டு மற்றும் வருமானச் சான்றிதழைச் சமர்ப்பிக்கவும்.\n2. பயோமெட்ரிக் பதிவு செய்து காப்பீட்டு அட்டை பெறவும்.",
+      "en": "1. Submit Ration card and Income certificate at the CMCHIS kiosk in the local Taluk Office.\n2. Complete biometric enrolment to receive CMCHIS Smart Card."
+    },
+    "application_url": "https://www.cmchistn.com/",
+    "official_source_url": "https://www.cmchistn.com/",
+    "helpline_number": "1800-425-3993 (Toll Free)",
+    "start_date": "2012-01-11",
+    "end_date": null,
+    "renewal_required": true,
+    "renewal_period": "3 Years",
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official TN Health Portal & myScheme.gov.in",
+    "statistics": { "views": 2400, "applications": 2100, "approved": 2010, "isDemo": true }
+  },
+  {
+    "id": "pm_kisan_samman",
+    "scheme_name": {
+      "ta": "பிரதம மந்திரி கிசான் சம்மான் நிதி (PM-KISAN)",
+      "en": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)"
+    },
+    "scheme_code": "CENT-AGRI-2019-01",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture & Farmers Welfare",
+    "category": "Agriculture",
+    "sub_category": "Direct Income Support for Cultivator Farmers",
+    "short_description": {
+      "ta": "விவசாயி குடும்பங்களுக்கு ஆண்டுக்கு ₹6,000 நிதியுதவி (₹2,000 வீதம் 3 தவணைகளில்) நேரடியாக வங்கி கணக்கில் செலுத்தும் மத்திய அரசு திட்டம்.",
+      "en": "Direct income support of ₹6,000 per year in 3 equal installments of ₹2,000 transferred directly to landholding farmer families."
+    },
+    "detailed_description": {
+      "ta": "நாடெங்கிலும் உள்ள நிலவுடைமை விவசாயக் குடும்பங்களுக்கு விதை, உரம் மற்றும் விவசாயத் தேவைகளுக்கான செலவுகளை சமாளிக்க 4 மாதங்களுக்கு ஒருமுறை ₹2,000 நேரடியாக வங்கி கணக்கில் வழங்கப்படுகிறது.",
+      "en": "Central sector scheme providing supplement financial needs of landholding farmers for procuring inputs related to agriculture and domestic requirements via direct benefit transfer."
+    },
+    "benefits": {
+      "ta": "ஆண்டுக்கு ₹6,000 (மூன்று 4-மாத தவணைகளில் தலா ₹2,000).",
+      "en": "₹6,000 annually credited in 3 installments of ₹2,000 each."
+    },
+    "eligibility_rules": {
+      "occupation": ["farmer"],
+      "minAge": 18,
+      "maxAge": 85,
+      "landOwner": true
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "land_patta", "name": { "ta": "நிலப் பட்டா / சிட்டா (Land Ownership Record)", "en": "Land Patta / Chitta Records" }, "icon": "📜" },
+      { "id": "bank_passbook", "name": { "ta": "ஆதார் இணைக்கப்பட்ட வங்கி கணக்கு", "en": "Aadhaar-seeded Bank Account" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. pmkisan.gov.in தளத்தில் 'New Farmer Registration' தேர்வு செய்யவும்.\n2. ஆதார் மற்றும் நிலப் பட்டா விவரங்களை உள்ளிட்டு e-KYC நிறைவு செய்யவும்.",
+      "en": "1. Visit pmkisan.gov.in and click 'New Farmer Registration'.\n2. Enter Aadhaar number, land patta details, and complete e-KYC via OTP."
+    },
+    "application_url": "https://pmkisan.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pm-kisan",
+    "helpline_number": "155261 / 1800-115-526",
+    "start_date": "2018-12-01",
+    "end_date": null,
+    "renewal_required": true,
+    "renewal_period": "Annual e-KYC Verification",
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official Central Govt Portal (pmkisan.gov.in) & myScheme.gov.in",
+    "statistics": { "views": 4200, "applications": 3890, "approved": 3650, "isDemo": true }
+  },
+  {
+    "id": "naan_mudhalvan",
+    "scheme_name": {
+      "ta": "நான் முதல்வன் திறன் மேம்பாட்டுத் திட்டம்",
+      "en": "Naan Mudhalvan Skill Development Scheme"
+    },
+    "scheme_code": "TN-EMP-2022-03",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Special Programme Implementation & Skill Development Department",
+    "department": "Tamil Nadu Skill Development Corporation (TNSDC)",
+    "category": "Skill Development",
+    "sub_category": "Industry Training & Career Guidance for Students",
+    "short_description": {
+      "ta": "தமிழ்நாடு கல்லூரி மாணவர்களுக்கு வளர்ந்து வரும் தொழில்நுட்பங்களில் இலவச தொழில்முறை பயிற்சி மற்றும் வேலைவாய்ப்பு அளிக்கும் திட்டம்.",
+      "en": "Statewide flagship initiative offering free high-tech skill training, coding bootcamps, language proficiency, and direct industry placements to TN college students."
+    },
+    "detailed_description": {
+      "ta": "செயற்கை நுண்ணறிவு (AI), மேகக்கணி (Cloud Computing), ரோபாட்டிக்ஸ் மற்றும் மேலாண்மை போன்ற நவீன துறைகளில் மாணவர்களின் திறனை உயர்த்தி வேலைவாய்ப்பை உறுதிப்படுத்துகிறது.",
+      "en": "Empowers young citizens with industry-relevant competencies in AI, Machine Learning, Data Analytics, Soft Skills, and Electric Vehicles to bridge the academia-industry gap."
+    },
+    "benefits": {
+      "ta": "இலவச சர்வதேசத் தொழில் நிறுவன சான்றிதழ் பயிற்சி + வேலைவாய்ப்பு முகாம்கள்.",
+      "en": "Free globally recognized industry certifications and guaranteed placement campus drives."
+    },
+    "eligibility_rules": {
+      "minAge": 17,
+      "maxAge": 28,
+      "occupation": ["student", "unemployed"],
+      "educationMin": "hsc"
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "college_id", "name": { "ta": "மாணவர் அடையாள அட்டை / கல்லூரி விவரம்", "en": "College ID / Student Reg Number" }, "icon": "🆔" }
+    ],
+    "application_process": {
+      "ta": "1. naanmudhalvan.tn.gov.in போர்ட்டலில் உங்களின் கல்லூரி EMIS / Register Number பயன்படுத்தி உள்நுழையவும்.\n2. விருப்பமான திறன் பயிற்சியைத் தேர்வு செய்து சேர்க்கை பெறவும்.",
+      "en": "1. Login on naanmudhalvan.tn.gov.in using college registration number.\n2. Select your domain of interest and enroll in upcoming training batches."
+    },
+    "application_url": "https://www.naanmudhalvan.tn.gov.in/",
+    "official_source_url": "https://www.naanmudhalvan.tn.gov.in/",
+    "helpline_number": "044-22501006",
+    "start_date": "2022-03-01",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official TN Skill Portal (naanmudhalvan.tn.gov.in)",
+    "statistics": { "views": 1950, "applications": 1720, "approved": 1650, "isDemo": true }
+  },
+  {
+    "id": "tn_post_matric_scholarship",
+    "scheme_name": {
+      "ta": "தமிழ்நாடு ஆதிதிராவிடர் & பிற்படுத்தப்பட்டோர் உயர்கல்வி கல்வி உதவித்தொகை",
+      "en": "TN Post-Matric Scholarship for SC/ST/BC/MBC Students"
+    },
+    "scheme_code": "TN-SCH-2021-05",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Adi Dravidar and Tribal Welfare Department / Backward Classes Dept",
+    "department": "Directorate of Tribal Welfare, Tamil Nadu",
+    "category": "Scholarships",
+    "sub_category": "Tuition Fee Waiver & Maintenance Allowance",
+    "short_description": {
+      "ta": "SC, ST, BC, MBC மற்றும் DNC கல்லூரி மாணவர்களுக்கு பயிற்சிக் கட்டணம் மற்றும் பராமரிப்பு உதவித்தொகை வழங்கும் அரசுத் திட்டம்.",
+      "en": "Full tuition fee reimbursement and monthly maintenance allowance for SC, ST, BC, MBC, and DNC students studying in post-matric courses."
+    },
+    "detailed_description": {
+      "ta": "11-ஆம் வகுப்பு முதல் ஆராய்ச்சி படிப்பு வரை படிக்கும் தகுதியுள்ள மாணவர்களின் கல்விக் கட்டணத்தை அரசே நேரடியாகக் கல்லூரிக்குச் செலுத்துவதுடன், விடுதி மற்றும் புத்தகச் செலவுகளுக்கும் தொகையளிக்கிறது.",
+      "en": "Covers compulsory non-refundable fees and grants maintenance allowances to students pursuing post-secondary education whose annual family income is within prescribed limits."
+    },
+    "benefits": {
+      "ta": "முழு கல்விக் கட்டண விலக்கு + மாதம் ₹500 - ₹1,200 வரை பராமரிப்பு உதவித்தொகை.",
+      "en": "100% tuition fee reimbursement + monthly stipend of ₹500 to ₹1,200."
+    },
+    "eligibility_rules": {
+      "minAge": 15,
+      "maxAge": 30,
+      "caste": ["sc_st", "mbc", "bc", "bcm"],
+      "occupation": ["student"],
+      "incomeMax": 250000
+    },
+    "required_documents": [
+      { "id": "caste_cert", "name": { "ta": "சாதிச் சான்றிதழ் (Community Certificate)", "en": "Community Certificate" }, "icon": "📜" },
+      { "id": "income_cert", "name": { "ta": "வருமானச் சான்றிதழ் (ஆண்டு வருமானம் ₹2.5L வரை)", "en": "Income Certificate (Max ₹2.5L)" }, "icon": "📄" },
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "bank_passbook", "name": { "ta": "மாணவரின் வங்கி கணக்கு புத்தகம்", "en": "Student's Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. tnadtwscholarship.tn.gov.in அல்லது NSP போர்ட்டலில் பதிவு செய்யவும்.\n2. சான்றிதழ்களைப் பதிவேற்றி கல்லூரி உதவித்தொகை அலுவலரிடம் சமர்ப்பிக்கவும்.",
+      "en": "1. Apply online via TN ADTW scholarship portal or National Scholarship Portal (NSP).\n2. Submit documents to the college scholarship nodalofficer for online verification."
+    },
+    "application_url": "https://scholarships.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pms-sc-tn",
+    "helpline_number": "1800-180-1551",
+    "start_date": "2015-06-01",
+    "end_date": null,
+    "renewal_required": true,
+    "renewal_period": "Annual Progress Verification",
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "National Scholarship Portal & myScheme.gov.in",
+    "statistics": { "views": 2800, "applications": 2550, "approved": 2420, "isDemo": true }
+  },
+  {
+    "id": "pm_awas_yojana_urban",
+    "scheme_name": {
+      "ta": "பிரதம மந்திரி ஆவாஸ் யோஜனா - நகர்ப்புற வீட்டு வசதி திட்டம் (PMAY-U)",
+      "en": "Pradhan Mantri Awas Yojana - Housing for All (PMAY-U / Urban)"
+    },
+    "scheme_code": "CENT-HOU-2015-02",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "department": "Housing and Urban Poverty Alleviation",
+    "category": "Housing",
+    "sub_category": "Subsidized Housing Construction & Loan Subsidy",
+    "short_description": {
+      "ta": "நகர்ப்புறத்தில் சொந்தமாகப் வீடு கட்ட அல்லது வாங்க ₹2.67 லட்சம் வரை வட்டி மானியம் மற்றும் நிதி உதவி வழங்கும் மத்திய அரசு திட்டம்.",
+      "en": "Central subsidy of up to ₹2.67 Lakhs for constructing or purchasing a pucca house in urban areas for EWS/LIG families."
+    },
+    "detailed_description": {
+      "ta": "நகர்ப்புறப் பகுதிகளில் வசிக்கும் வீடற்ற ஏழை எளிய மக்களுக்குப் பாதுகாப்பான நிலையான சிமெண்ட் வீடு கட்ட நிதியுதவி மற்றும் வங்கிக் கடனுக்கான வட்டி மானியம் (CLSS) வழங்கப்படுகிறது.",
+      "en": "Ensures a pucca house to all eligible urban households, offering credit-linked interest subsidies and beneficiary-led individual house construction grants."
+    },
+    "benefits": {
+      "ta": "வீடு கட்ட ₹2.50 லட்சம் நேரடி மானியம் அல்லது வட்டி மானியம் ₹2.67 லட்சம் வரை.",
+      "en": "Financial grant of ₹2.50 Lakhs for construction or interest subsidy up to ₹2.67 Lakhs."
+    },
+    "eligibility_rules": {
+      "minAge": 21,
+      "maxAge": 70,
+      "incomeMax": 600000,
+      "ownPuccaHouse": false
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "குடும்பத் தலைவரின் ஆதார் அட்டை", "en": "Aadhaar Card of Applicant" }, "icon": "🪪" },
+      { "id": "income_cert", "name": { "ta": "வருமானச் சான்றிதழ்", "en": "Income Certificate" }, "icon": "📄" },
+      { "id": "land_doc", "name": { "ta": "வீட்டு மனை ஆவணம் / பட்டா", "en": "Land Document / Patta" }, "icon": "📜" }
+    ],
+    "application_process": {
+      "ta": "1. pmaymis.gov.in போர்ட்டலில் அல்லது அருகில் உள்ள தமிழ்நாடு நகர்ப்புற வாழ்விட மேம்பாட்டு வாரிய அலுவலகத்தில் விண்ணப்பிக்கவும்.\n2. தாலுகா / நகராட்சி அதிகாரி கள ஆய்வு செய்து ஒப்புதல் அளிப்பார்.",
+      "en": "1. Apply online via pmaymis.gov.in or through local TN Urban Habitat Development Board office.\n2. Physical field verification is conducted by municipal engineers before fund sanction."
+    },
+    "application_url": "https://pmaymis.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmay-u",
+    "helpline_number": "1800-11-3377 / 1800-11-3388",
+    "start_date": "2015-06-25",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official PMAY Portal & myScheme.gov.in",
+    "statistics": { "views": 3400, "applications": 2900, "approved": 2700, "isDemo": true }
+  },
+  {
+    "id": "pm_mudra_yojana",
+    "scheme_name": {
+      "ta": "பிரதம மந்திரி முத்ரா கடன் திட்டம் (PM Mudra Yojana)",
+      "en": "Pradhan Mantri MUDRA Yojana (PMMY Loan)"
+    },
+    "scheme_code": "CENT-ENT-2015-03",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "category": "Entrepreneurship",
+    "sub_category": "Collateral-Free Business Loans up to ₹10 Lakhs",
+    "short_description": {
+      "ta": "சிறு வணிகம், வியாபாரம் மற்றும் உற்பத்தித் தொழில்களுக்கு ₹10 லட்சம் வரை பிணையற்ற (Collateral-Free) வங்கிக் கடன் வழங்கும் திட்டம்.",
+      "en": "Provides collateral-free micro loans up to ₹10 Lakhs to non-corporate, non-farm small/micro enterprises."
+    },
+    "detailed_description": {
+      "ta": "இத்திட்டம் மூன்று நிலைகளில் கடன் வழங்குகிறது: சிஷு (Shishu - ₹50,000 வரை), கிஷோர் (Kishor - ₹50,000 முதல் ₹5 லட்சம் வரை), மற்றும் தருண் (Tarun - ₹5 லட்சம் முதல் ₹10 லட்சம் வரை).",
+      "en": "Categorizes loan requirements into three categories: Shishu (up to ₹50,000), Kishor (₹50,000 to ₹5 Lakhs), and Tarun (₹5 Lakhs to ₹10 Lakhs) with simplified paperwork and competitive interest rates."
+    },
+    "benefits": {
+      "ta": "ரூ. 10 லட்சம் வரை பிணை வைப்பு (Collateral Security) இல்லா வங்கிக் கடன்.",
+      "en": "Collateral-free business loan up to ₹10,00,000 with MUDRA Card facility."
+    },
+    "eligibility_rules": {
+      "minAge": 18,
+      "maxAge": 65,
+      "occupation": ["vendor", "artisan", "homemaker", "unemployed", "salaried"]
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் அட்டை & வாக்காளர் அடையாள அட்டை", "en": "Aadhaar Card & Voter ID" }, "icon": "🪪" },
+      { "id": "business_plan", "name": { "ta": "தொழில் திட்ட அறிக்கை (Business Plan Proposal)", "en": "Business Plan / Quotation Proposal" }, "icon": "📊" },
+      { "id": "bank_statement", "name": { "ta": "கடந்த 6 மாத வங்கி கணக்கு விவரம்", "en": "6 Months Bank Statement" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. udyamimitra.in போர்ட்டலில் அல்லது ஏதேனும் பொதுத்துறை வங்கிக் கிளையில் விண்ணப்பிக்கவும்.\n2. தொழில் திட்ட அறிக்கையை வங்கியாளரிடம் சமர்ப்பித்து ஒப்புதல் பெறவும்.",
+      "en": "1. Apply online at udyamimitra.in or submit application directly at any commercial bank branch.\n2. Present business proposal to bank manager for verification and loan disbursement."
+    },
+    "application_url": "https://www.udyamimitra.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmmy",
+    "helpline_number": "1800-180-1111 / 1800-11-0001",
+    "start_date": "2015-04-08",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official MUDRA Portal & myScheme.gov.in",
+    "statistics": { "views": 5100, "applications": 4300, "approved": 3900, "isDemo": true }
+  },
+  {
+    "id": "pm_svanidhi_street_vendor",
+    "scheme_name": {
+      "ta": "பிரதம மந்திரி ஸ்வாநிதி தெருவோர வியாபாரிகள் கடன் திட்டம் (PM SVANidhi)",
+      "en": "PM SVANidhi - Micro Credit Scheme for Street Vendors"
+    },
+    "scheme_code": "CENT-ENT-2020-04",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "department": "Urban Poverty Alleviation",
+    "category": "Employment",
+    "sub_category": "Working Capital Micro-Loans for Vendors",
+    "short_description": {
+      "ta": "தெருவோர வியாபாரிகளுக்கு பிணையற்ற தொழில் மூலதனக் கடன் ₹10,000 முதல் ₹50,000 வரை 7% வட்டி மானியத்துடன் வழங்கும் திட்டம்.",
+      "en": "Collateral-free working capital loan of ₹10,000 to ₹50,000 for street vendors with 7% interest subsidy and cashback incentives on digital transactions."
+    },
+    "detailed_description": {
+      "ta": "கொரோனா காலத்திற்குப் பின் தெருவோர சிறு வியாபாரிகளின் வாழ்வாதாரத்தை மீட்க 1-ஆம் கட்டமாக ₹10,000, சரியாகச் செலுத்துவோருக்கு 2-ஆம் கட்டமாக ₹20,000 மற்றும் 3-ஆம் கட்டமாக ₹50,000 கடன் வழங்கப்படுகிறது.",
+      "en": "Facilitates working capital loans to street vendors to restart business operations. Enhanced loan limits are unlocked upon timely repayment along with digital cashback rewards."
+    },
+    "benefits": {
+      "ta": "₹10,000 - ₹50,000 வரை பிணையற்ற வங்கி கடன் + 7% வட்டி மானியம்.",
+      "en": "Collateral-free micro loans up to ₹50,000 with 7% annual interest subsidy."
+    },
+    "eligibility_rules": {
+      "occupation": ["vendor"],
+      "minAge": 18,
+      "maxAge": 70
+    },
+    "required_documents": [
+      { "id": "vendor_id", "name": { "ta": "நகராட்சி தெருவோர வியாபாரி அடையாள அட்டை / LOR", "en": "Certificate of Vending / Letter of Recommendation (LOR)" }, "icon": "🆔" },
+      { "id": "aadhaar", "name": { "ta": "ஆதார் அட்டை", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. pmsvanidhi.mohua.gov.in போர்ட்டலில் அல்லது e-Sevai மையத்தில் பதிவு செய்ய வேண்டும்.\n2. உள்ளாட்சி அமைப்பு (ULB) பரிந்துரை அடிப்படையில் வங்கி கடன் தொகையை வழங்கும்.",
+      "en": "1. Register on pmsvanidhi.mohua.gov.in or visit local e-Sevai / CSC centre.\n2. Urban Local Body verifies vendor records and forwards to partner bank for approval."
+    },
+    "application_url": "https://pmsvanidhi.mohua.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmsvanidhi",
+    "helpline_number": "1800-11-1979",
+    "start_date": "2020-06-01",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official PM SVANidhi Portal & myScheme.gov.in",
+    "statistics": { "views": 1600, "applications": 1420, "approved": 1380, "isDemo": true }
+  },
+  {
+    "id": "tn_needs_entrepreneur",
+    "scheme_name": {
+      "ta": "புதிய தொழில்முனைவோர் மற்றும் தொழில் நிறுவன மேம்பாட்டுத் திட்டம் (NEEDS)",
+      "en": "New Entrepreneur cum Enterprise Development Scheme (NEEDS TN)"
+    },
+    "scheme_code": "TN-ENT-2012-06",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Micro, Small and Medium Enterprises (MSME) Department",
+    "department": "Department of Industries and Commerce, Tamil Nadu",
+    "category": "Entrepreneurship",
+    "sub_category": "Capital Subsidy for First-Gen Educated Entrepreneurs",
+    "short_description": {
+      "ta": "பட்டதாரி முதல் தலைமுறை தொழில்முனைவோருக்கு ₹5 கோடி வரையிலான உற்பத்தி/சேவை தொழில்களுக்கு 25% மூலதன மானியம் (₹75 லட்சம் வரை) வழங்கும் திட்டம்.",
+      "en": "Capital subsidy of 25% (up to ₹75 Lakhs) and 3% interest subvention for first-generation educated entrepreneurs launching projects up to ₹5 Crores."
+    },
+    "detailed_description": {
+      "ta": "பட்டப்படிப்பு அல்லது டிப்ளமோ முடித்த இளைஞர்கள் உற்பத்தி அல்லது சேவைத் துறையில் புதிய தொழில் தொடங்க 25% மானியத்துடன் தொழில்முனைவோர் மேம்பாட்டு பயிற்சி (EDII) வழங்கி வங்கிக் கடன் இணைப்பு அளிக்கிறது.",
+      "en": "Targeted at educated youth (Degree/Diploma holders) to establish MSME enterprises. Includes compulsory entrepreneurship training by EDII-TN and bank credit linkage."
+    },
+    "benefits": {
+      "ta": "25% அரசு மூலதன மானியம் (அதிகபட்சம் ₹75,00,000) + 3% வட்டி மானியம்.",
+      "en": "25% Project Capital Subsidy (Max ₹75 Lakhs) + 3% Interest Subvention."
+    },
+    "eligibility_rules": {
+      "minAge": 21,
+      "maxAge": 45,
+      "educationMin": "diploma",
+      "occupation": ["unemployed", "salaried", "artisan"]
+    },
+    "required_documents": [
+      { "id": "degree_cert", "name": { "ta": "பட்டப்படிப்பு / டிப்ளமோ சான்றிதழ்", "en": "Degree / Diploma Certificate" }, "icon": "🎓" },
+      { "id": "project_report", "name": { "ta": "விரிவான தொழில் திட்ட அறிக்கை (DPR)", "en": "Detailed Project Report (DPR)" }, "icon": "📈" },
+      { "id": "community_cert", "name": { "ta": "சாதிச் சான்றிதழ் & ஆதார்", "en": "Community Certificate & Aadhaar" }, "icon": "🪪" }
+    ],
+    "application_process": {
+      "ta": "1. msmeonline.tn.gov.in போர்ட்டலில் விண்ணப்பிக்கவும்.\n2. மாவட்ட தொழில் மையம் (DIC) நேர்முகத் தேர்வு மூலம் பயனாளிகளைத் தேர்வு செய்து வங்கியின் கடனுக்குப் பரிந்துரைக்கும்.",
+      "en": "1. Apply online via msmeonline.tn.gov.in.\n2. District Industries Centre (DIC) interviews candidates and recommends project to bank for loan & subsidy."
+    },
+    "application_url": "https://www.msmeonline.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/needs-tn",
+    "helpline_number": "044-22500111 / 044-22501002",
+    "start_date": "2012-07-02",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official TN MSME Portal & myScheme.gov.in",
+    "statistics": { "views": 2100, "applications": 1750, "approved": 1590, "isDemo": true }
+  },
+  {
+    "id": "tn_disability_pension",
+    "scheme_name": {
+      "ta": "தமிழ்நாடு மாற்றுத்திறனாளிகளுக்கான சிறப்பு மாதாந்திர உதவித்தொகை திட்டம்",
+      "en": "TN Maintenance Allowance for Persons with Severe Disability"
+    },
+    "scheme_code": "TN-DIS-2011-07",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Welfare of Differently Abled Persons Department",
+    "department": "Directorate for Welfare of the Differently Abled, Tamil Nadu",
+    "category": "Disability",
+    "sub_category": "Monthly Maintenance Allowance for Disabled",
+    "short_description": {
+      "ta": "40% அல்லது அதற்கு மேற்பட்ட மாற்றுத்திறன் கொண்ட நபர்களுக்கு மாதந்தோறும் ₹2,000 பராமரிப்பு நிதியுதவி வழங்கும் தமிழ்நாடு அரசு திட்டம்.",
+      "en": "Monthly maintenance allowance of ₹2,000 provided directly into the bank accounts of severely differently-abled citizens in Tamil Nadu."
+    },
+    "detailed_description": {
+      "ta": "கடும் மாற்றுத்திறனாளிகள், மனவளர்ச்சி குன்றியோர், மற்றும் முதுகெலும்பு பாதிக்கப்பட்டோர் பிறரைச் சார்ந்திராமல் தங்களின் அன்றாட மருந்து மற்றும் பராமரிப்புச் செலவுகளை மேற்கொள்ள மாதம் ₹2,000 வழங்கப்படுகிறது.",
+      "en": "Ensures social security and dignity for severely disabled individuals (40%+ disability, intellectual disability, spinal cord injuries) with direct monthly financial transfers."
+    },
+    "benefits": {
+      "ta": "மாதந்தோறும் ₹2,000 நேரடி உதவித்தொகை வங்கி கணக்கில் செலுத்துதல்.",
+      "en": "Monthly maintenance stipend of ₹2,000 direct bank deposit."
+    },
+    "eligibility_rules": {
+      "disability": "yes",
+      "minAge": 0,
+      "maxAge": 100,
+      "residence": "Tamil Nadu"
+    },
+    "required_documents": [
+      { "id": "disability_card", "name": { "ta": "மாற்றுத்திறனாளி தேசிய அடையாள அட்டை (UDID Card)", "en": "National Disability UDID Card" }, "icon": "♿" },
+      { "id": "aadhaar", "name": { "ta": "ஆதார் அட்டை", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. மாவட்ட மாற்றுத்திறனாளிகள் நல அலுவலரிடம் (DDWO) அல்லது e-Sevai மையத்தில் விண்ணப்பிக்கவும்.\n2. மருத்துவக் குழு ஆய்வுக்குப் பின் உதவித்தொகை ஒப்புதல் அளிக்கப்படும்.",
+      "en": "1. Submit application at District Differently Abled Welfare Office (DDWO) or local e-Sevai centre.\n2. Medical board verifies certificate and sanctions monthly allowance."
+    },
+    "application_url": "https://www.tnesevai.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/mapd-tn",
+    "helpline_number": "1800-425-0111",
+    "start_date": "2011-04-01",
+    "end_date": null,
+    "renewal_required": true,
+    "renewal_period": "Annual Life Certificate",
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official e-Sevai Portal & myScheme.gov.in",
+    "statistics": { "views": 1350, "applications": 1210, "approved": 1180, "isDemo": true }
+  },
+  {
+    "id": "ayushman_bharat_pmjay",
+    "scheme_name": {
+      "ta": "ஆயுஷ்மான் பாரத் - பிரதம மந்திரி ஜன் ஆரோக்கிய யோஜனா (PM-JAY)",
+      "en": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)"
+    },
+    "scheme_code": "CENT-HEA-2018-05",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Health and Family Welfare",
+    "department": "National Health Authority (NHA)",
+    "category": "Health",
+    "sub_category": "National Cashless Hospitalization Guarantee",
+    "short_description": {
+      "ta": "ஏழை மற்றும் நடுத்தர குடும்பங்களுக்கு நாடு தழுவிய அளவில் ஆண்டுக்கு ₹5 லட்சம் இலவச மருத்துவக் காப்பீடு வழங்கும் மத்திய அரசு திட்டம்.",
+      "en": "World's largest government-funded health insurance scheme offering cashless tertiary care hospitalization up to ₹5 Lakhs per family per year across India."
+    },
+    "detailed_description": {
+      "ta": "12 கோடிக்கும் மேற்பட்ட ஏழை எளிய குடும்பங்களுக்கு இந்தியாவின் எந்தவொரு அங்கீகரிக்கப்பட்ட அரசு மற்றும் தனியார் மருத்துவமனையிலும் இரண்டாம் மற்றும் மூன்றாம் நிலை கட்டணமில்லா சிகிச்சை அளிக்க உறுதி செய்கிறது.",
+      "en": "Covers medical procedures, diagnostic tests, medicines, ICU care, and post-hospitalization costs up to 15 days for over 50 crore individual beneficiaries across India."
+    },
+    "benefits": {
+      "ta": "குடும்பத்திற்கு ஆண்டுக்கு ₹5,00,00,00 இலவச மருத்துவச் சிகிச்சை பலன்.",
+      "en": "₹5,00,000 annual cashless health coverage per family across empaneled hospitals nationwide."
+    },
+    "eligibility_rules": {
+      "minAge": 0,
+      "maxAge": 100,
+      "incomeMax": 250000
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் அட்டை", "en": "Aadhaar Card" }, "icon": "🪪" },
+      { "id": "ration_card", "name": { "ta": "குடும்ப ரேஷன் கார்டு", "en": "Ration Card" }, "icon": "💳" }
+    ],
+    "application_process": {
+      "ta": "1. pmjay.gov.in போர்ட்டலில் 'Am I Eligible' பகுதியில் ஆதார் எண்ணை உள்ளிட்டு தகுதியைச் சரிபார்க்கவும்.\n2. அங்கீகரிக்கப்பட்ட மருத்துவமனையில் உள்ள ஆயுஷ்மான் மித்ரா மூலம் PM-JAY அட்டை பெறவும்.",
+      "en": "1. Check eligibility on pmjay.gov.in using Mobile/Aadhaar or Ration Card number.\n2. Visit Ayushman Mitra desk at any empaneled hospital to generate Ayushman Card."
+    },
+    "application_url": "https://pmjay.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmjay",
+    "helpline_number": "14555 / 1800-111-565",
+    "start_date": "2018-09-23",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official PM-JAY NHA Portal & myScheme.gov.in",
+    "statistics": { "views": 4800, "applications": 4400, "approved": 4250, "isDemo": true }
+  },
+  {
+    "id": "pm_vishwakarma_artisan",
+    "scheme_name": {
+      "ta": "பிரதம மந்திரி விஸ்வகர்மா திட்டம் (பாரம்பரிய கைவினைஞர்கள் திட்டம்)",
+      "en": "PM Vishwakarma Scheme for Traditional Artisans & Craftspeople"
+    },
+    "scheme_code": "CENT-ART-2023-06",
+    "government_level": "Central",
+    "state": "All States",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "department": "Office of Development Commissioner (MSME)",
+    "category": "Financial Assistance",
+    "sub_category": "Toolkit Incentive & Collateral-Free Loans for Artisans",
+    "short_description": {
+      "ta": "18 வகையான பாரம்பரிய கைவினைஞர்கள் மற்றும் தச்சர்களுக்கு ₹15,000 இலவச கருவிகள் மானியம் + ₹3 லட்சம் குறைந்த வட்டி கடன் வழங்கும் திட்டம்.",
+      "en": "End-to-end holistic support for 18 traditional trades including ₹15,000 skill toolkit grant, stipend training, and 5% interest collateral-free loans up to ₹3 Lakhs."
+    },
+    "detailed_description": {
+      "ta": "தச்சர், கொல்லர், தட்டார், கொத்தனார், நெசவாளர், சலவைத் தொழிலாளி, மற்றும் பூமாலை தொடுப்போர் போன்ற 18 பாரம்பரிய கைவினைத் தொழிலாளர்களுக்கு மேம்பட்ட பயிற்சி, கருவித்தொகுதி மானியம் மற்றும் சந்தைப்படுத்தல் உதவி அளிக்கிறது.",
+      "en": "Preserves Guru-Shishya parampara and traditional craftsmanship by providing modern training, digital transaction incentives, and enterprise expansion loans."
+    },
+    "benefits": {
+      "ta": "₹15,000 இலவச கருவித்தொகுதி மானியம் + ₹3,00,000 வரை 5% வட்டி கடன் + நாள் ஒன்றுக்கு ₹500 பயிற்சி உதவித்தொகை.",
+      "en": "₹15,000 Toolkit Grant + Collateral-free loan up to ₹3 Lakhs at 5% interest + ₹500/day stipend during training."
+    },
+    "eligibility_rules": {
+      "occupation": ["artisan", "vendor"],
+      "minAge": 18,
+      "maxAge": 70
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு & மொபைல் எண்", "en": "Aadhaar Card linked with Mobile" }, "icon": "🪪" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" },
+      { "id": "ration_card", "name": { "ta": "குடும்ப அட்டை", "en": "Ration Card" }, "icon": "💳" }
+    ],
+    "application_process": {
+      "ta": "1. pmvishwakarma.gov.in போர்ட்டலில் e-Sevai / CSC மையம் மூலம் பயோமெட்ரிக் பதிவு செய்ய வேண்டும்.\n2. கிராம பஞ்சாயத்து தலைவர் / நகராட்சி ஆணையர் சரிபார்ப்பிற்குப் பின் அட்டை வழங்கப்படும்.",
+      "en": "1. Complete biometric registration at nearest CSC centre on pmvishwakarma.gov.in.\n2. Verification by Gram Panchayat Head / ULB Commissioner followed by District Implementation Committee approval."
+    },
+    "application_url": "https://pmvishwakarma.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pm-vishwakarma",
+    "helpline_number": "1800-267-7777 / 011-23061574",
+    "start_date": "2023-09-17",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official PM Vishwakarma Portal & myScheme.gov.in",
+    "statistics": { "views": 2900, "applications": 2600, "approved": 2400, "isDemo": true }
+  },
+  {
+    "id": "tn_uyegp_employment",
+    "scheme_name": {
+      "ta": "வேலையற்ற இளைஞர்களுக்கான வேலைவாய்ப்பு உருவாக்கும் திட்டம் (UYEGP)",
+      "en": "Unemployed Youth Employment Generation Programme (UYEGP TN)"
+    },
+    "scheme_code": "TN-EMP-2010-08",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Micro, Small and Medium Enterprises Department",
+    "department": "Department of Industries and Commerce, Tamil Nadu",
+    "category": "Employment",
+    "sub_category": "Subsidized Micro-Loans for Unemployed Youth",
+    "short_description": {
+      "ta": "வேலையற்ற இளைஞர்கள் உற்பத்தி, சேவை மற்றும் வியாபாரத் தொழில் தொடங்க ₹15 லட்சம் வரை கடனும் 25% அரசு மானியமும் வழங்கும் திட்டம்.",
+      "en": "Financial subsidy of 25% for setting up micro-enterprises in manufacturing (up to ₹15 Lakhs), service (up to ₹5 Lakhs), and business (up to ₹5 Lakhs)."
+    },
+    "detailed_description": {
+      "ta": "8-ஆம் வகுப்பு தேர்ச்சி பெற்ற 18 முதல் 45 வயதுடைய வேலையற்ற இளைஞர்களுக்கு சுயதொழில் வாய்ப்பை உருவாக்கித் தர 25% மானியத்துடன் வங்கி கடன் வழங்கப்படுகிறது.",
+      "en": "Reduces unemployment by supporting educated youth to set up micro-enterprises with 25% state subsidy and smooth bank linkage."
+    },
+    "benefits": {
+      "ta": "25% அரசு மானியம் (அதிகபட்சம் ₹3.75 லட்சம்) + 5% குறைந்த சொந்தப் பங்களிப்பு.",
+      "en": "25% Government Subsidy (up to ₹3.75 Lakhs) + Only 5% beneficiary contribution."
+    },
+    "eligibility_rules": {
+      "minAge": 18,
+      "maxAge": 45,
+      "educationMin": "school_below",
+      "incomeMax": 500000,
+      "occupation": ["unemployed", "artisan", "homemaker"]
+    },
+    "required_documents": [
+      { "id": "school_cert", "name": { "ta": "8-ஆம் வகுப்பு தேர்ச்சி / மாற்றுச் சான்றிதழ்", "en": "8th Pass School TC / Mark Sheet" }, "icon": "🎓" },
+      { "id": "community_cert", "name": { "ta": "சாதிச் சான்றிதழ்", "en": "Community Certificate" }, "icon": "📜" },
+      { "id": "project_quotation", "name": { "ta": "இயந்திரங்கள் / பொருட்கள் விலைப்பட்டியல் (Quotation)", "en": "Machinery Quotation / Project Estimate" }, "icon": "🧾" }
+    ],
+    "application_process": {
+      "ta": "1. msmeonline.tn.gov.in தளத்தில் UYEGP விண்ணப்பத்தைப் பூர்த்தி செய்யவும்.\n2. மாவட்ட தொழில் மையம் (DIC) நேர்முகத் தேர்வுக்குப் பின் வங்கி கடன் வழங்கப்படும்.",
+      "en": "1. Fill UYEGP application online at msmeonline.tn.gov.in.\n2. District Task Force Committee conducts interview and sanctions loan via local bank."
+    },
+    "application_url": "https://www.msmeonline.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/uyegp-tn",
+    "helpline_number": "044-22501006",
+    "start_date": "2010-08-15",
+    "end_date": null,
+    "renewal_required": false,
+    "renewal_period": null,
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official TN MSME Portal & myScheme.gov.in",
+    "statistics": { "views": 1850, "applications": 1590, "approved": 1420, "isDemo": true }
+  },
+  {
+    "id": "tn_old_age_pension",
+    "scheme_name": {
+      "ta": "தமிழ்நாடு இந்திரா காந்தி தேசிய முதியோர் ஓய்வூதியத் திட்டம் (IGNOAPS / OAP)",
+      "en": "TN Indira Gandhi National Old Age Pension Scheme (IGNOAPS / OAP)"
+    },
+    "scheme_code": "TN-SOC-1995-09",
+    "government_level": "State",
+    "state": "Tamil Nadu",
+    "ministry": "Revenue and Disaster Management Department",
+    "department": "Social Security Schemes, Tamil Nadu",
+    "category": "Senior Citizens",
+    "sub_category": "Monthly Social Security Pension for Elderly",
+    "short_description": {
+      "ta": "60 வயது நிரம்பிய ஆதரவற்ற முதியோர்களுக்கு மாதந்தோறும் ₹1,200 ஓய்வூதியம் மற்றும் இலவச அரிசி வழங்கும் தமிழ்நாடு அரசு திட்டம்.",
+      "en": "Monthly social security pension of ₹1,200 and monthly free rice ration for destitute senior citizens aged 60 and above."
+    },
+    "detailed_description": {
+      "ta": "ஆதரவற்ற ஏழை முதியோர் தங்களின் அடிப்படைத் தேவைகளான உணவு மற்றும் மருத்துவச் செலவுகளை மேற்கொள்ளும் வகையில் வட்டாட்சியர் மூலம் மாதம் ₹1,200 நேரடியாக வங்கி கணக்கில் வழங்கப்படுகிறது.",
+      "en": "Provides financial subsistence allowance and food security to destitute elderly persons with no regular source of income or familial financial support."
+    },
+    "benefits": {
+      "ta": "மாதம் ₹1,200 வங்கி கணக்கில் வரவு + நியாயவிலைக் கடையில் மாதம் 4 கிலோ இலவச அரிசி.",
+      "en": "₹1,200 monthly pension credited to bank account + 4 kg free rice monthly at PDS shop."
+    },
+    "eligibility_rules": {
+      "minAge": 60,
+      "maxAge": 100,
+      "incomeMax": 120000,
+      "occupation": ["retired", "unemployed", "homemaker"]
+    },
+    "required_documents": [
+      { "id": "aadhaar", "name": { "ta": "ஆதார் கார்டு (வயது அத்தாட்சி)", "en": "Aadhaar Card (Age Proof)" }, "icon": "🪪" },
+      { "id": "smart_card", "name": { "ta": "குடும்ப ரேஷன் கார்டு", "en": "Smart Ration Card" }, "icon": "💳" },
+      { "id": "bank_passbook", "name": { "ta": "வங்கி கணக்கு புத்தகம்", "en": "Bank Passbook" }, "icon": "🏦" }
+    ],
+    "application_process": {
+      "ta": "1. e-Sevai மையம் மூலம் வட்டாட்சியருக்கு (Tahsildar) விண்ணப்பிக்கவும்.\n2. கிராம நிர்வாக அலுவலர் (VAO) கள ஆய்வு செய்து ஓய்வூதியம் வழங்குவார்.",
+      "en": "1. Submit application to Tahsildar through nearest e-Sevai centre.\n2. VAO conducts field enquiry to verify destitution status before pension sanction."
+    },
+    "application_url": "https://www.tnesevai.tn.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/oap-tn",
+    "helpline_number": "1800-425-1600 / 1100",
+    "start_date": "1995-11-19",
+    "end_date": null,
+    "renewal_required": true,
+    "renewal_period": "Annual Life Verification (Jeevan Pramaan)",
+    "active_status": "ACTIVE",
+    "last_verified_at": "23/09/2026",
+    "source_type": "Official TN e-Sevai Portal & myScheme.gov.in",
+    "statistics": { "views": 2600, "applications": 2300, "approved": 2180, "isDemo": true }
+  }
+]

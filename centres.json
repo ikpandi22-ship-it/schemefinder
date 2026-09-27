@@ -1,0 +1,106 @@
+[
+  {
+    "id": "csc_dgl_1",
+    "district": "dindigul",
+    "type": "csc",
+    "name": {
+      "ta": "திண்டுக்கல் ஆட்சியர் அலுவலக இ-சேவை மையம்",
+      "en": "Dindigul Collectorate TNeGA e-Sevai Centre"
+    },
+    "address": "District Collectorate Campus, Grand Bazaar, Dindigul - 624001",
+    "distance": "1.2 km",
+    "phone": "0451-2460001",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  },
+  {
+    "id": "taluk_dgl_1",
+    "district": "dindigul",
+    "type": "taluk",
+    "name": {
+      "ta": "திண்டுக்கல் மேற்கு தாலுகா அலுவலகம்",
+      "en": "Dindigul West Taluk Office Service Counter"
+    },
+    "address": "Near Bus Stand, Sub Collector Office Road, Dindigul - 624001",
+    "distance": "2.1 km",
+    "phone": "0451-2423100",
+    "hours": "10:00 AM - 05:00 PM (Mon-Fri)"
+  },
+  {
+    "id": "csc_chn_1",
+    "district": "chennai",
+    "type": "csc",
+    "name": {
+      "ta": "சென்னை ரிப்பன் மாளிகை தலைமை இ-சேவை மையம்",
+      "en": "Chennai Ripon Building TNeGA e-Sevai Centre"
+    },
+    "address": "Greater Chennai Corporation HQ, EVR Periyar Salai, Park Town, Chennai - 600003",
+    "distance": "0.8 km",
+    "phone": "044-25619200",
+    "hours": "09:00 AM - 06:00 PM (Mon-Sat)"
+  },
+  {
+    "id": "csc_chn_2",
+    "district": "chennai",
+    "type": "csc",
+    "name": {
+      "ta": "அடையாறு TNeGA இ-சேவை மையம்",
+      "en": "Adyar Zonal Office e-Sevai Centre"
+    },
+    "address": "Zone 13 Office, 11th Cross St, Shastri Nagar, Adyar, Chennai - 600020",
+    "distance": "3.5 km",
+    "phone": "044-24911234",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  },
+  {
+    "id": "csc_cbe_1",
+    "district": "coimbatore",
+    "type": "csc",
+    "name": {
+      "ta": "கோவை தண்டுமாரியம்மன் கோவில் e-Sevai மையம்",
+      "en": "Coimbatore South Taluk Office e-Sevai Centre"
+    },
+    "address": "Old Taluk Office Campus, Opposite Railway Station, Coimbatore - 641018",
+    "distance": "1.5 km",
+    "phone": "0422-2300400",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  },
+  {
+    "id": "csc_mdu_1",
+    "district": "madurai",
+    "type": "csc",
+    "name": {
+      "ta": "மதுரை மாவட்ட ஆட்சியரகம் இ-சேவை மையம்",
+      "en": "Madurai Collectorate TNeGA e-Sevai Centre"
+    },
+    "address": "Collectorate Buildings, KK Nagar Main Road, Madurai - 625020",
+    "distance": "1.0 km",
+    "phone": "0452-2532290",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  },
+  {
+    "id": "csc_trchy_1",
+    "district": "tiruchirappalli",
+    "type": "csc",
+    "name": {
+      "ta": "திருச்சி மாநகராட்சி இ-சேவை மையம்",
+      "en": "Trichy City Corporation e-Sevai Centre"
+    },
+    "address": "Bharathidasan Salai, Cantonment, Tiruchirappalli - 620001",
+    "distance": "1.8 km",
+    "phone": "0431-2415300",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  },
+  {
+    "id": "csc_slm_1",
+    "district": "salem",
+    "type": "csc",
+    "name": {
+      "ta": "சேலம் தாலுகா அலுவலக இ-சேவை மையம்",
+      "en": "Salem West Taluk Office e-Sevai Centre"
+    },
+    "address": "Collectorate Campus, Bretts Road, Salem - 636001",
+    "distance": "1.1 km",
+    "phone": "0427-2416001",
+    "hours": "09:30 AM - 05:30 PM (Mon-Sat)"
+  }
+]
